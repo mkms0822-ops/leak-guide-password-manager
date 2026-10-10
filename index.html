@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>個人情報が漏れたら｜いま何をすべきか 対処ガイド</title>
+<meta name="description" content="サイバー攻撃で個人情報が漏洩したとき、何をどの順番ですべきか。信用情報機関への本人申告（混雑時の進め方）、本人通知制度、相談先まで、手数料と手順をまとめました。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="個人情報が漏れたら｜対処ガイド">
+<meta property="og:description" content="免許証やクレジット情報が流出したとき、いま何をすべきか。">
+<meta name="theme-color" content="#131a26">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+<meta name="application-name" content="漏洩対処ガイド">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="漏洩対処ガイド">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#f5f7fa; --card:#fff; --line:#dde4ed; --ink:#1a2332; --sub:#64748b;
+    --red:#d33a3a; --amber:#e08a2e; --green:#2e9e6b; --blue:#2c6fd1;
+    --mono:'SFMono-Regular',Consolas,monospace;
+  }
+  html{scroll-behavior:smooth;scroll-padding-top:16px}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.85;
+    -webkit-text-size-adjust:100%;
+    padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 13px}
+
+  .hero{
+    background:linear-gradient(150deg,#131a26,#1e2a3d 60%,#2a3550);
+    color:#fff;margin:0 -13px 18px;padding:28px 20px 24px;
+    padding-top:calc(28px + env(safe-area-inset-top,0px));text-align:center;
+  }
+  .hero .mk{font-family:var(--mono);font-size:9.5px;letter-spacing:.34em;color:#8fb8e8;margin-bottom:9px}
+  .hero h1{font-size:25px;font-weight:700;line-height:1.4}
+  .hero .jp{font-size:13px;color:#b9c9de;margin-top:11px;line-height:1.8}
+
+  /* 緊急度 */
+  .urgent{
+    background:#fff3f3;border:2px solid #f3c0c0;border-radius:16px;
+    padding:16px 17px;margin-bottom:18px;
+  }
+  .urgent h2{font-size:15.5px;font-weight:700;color:var(--red);margin-bottom:8px}
+  .urgent p{font-size:13.5px;line-height:1.85}
+  .urgent b{color:var(--red)}
+
+  /* 手順 */
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    margin-bottom:12px;overflow:hidden;
+  }
+  .step-h{
+    display:flex;align-items:center;gap:12px;width:100%;
+    padding:15px 16px;background:transparent;border:none;cursor:pointer;
+    font-family:inherit;text-align:left;color:var(--ink);
+  }
+  .step-h:hover{background:#f8fafc}
+  .step-h .no{
+    width:30px;height:30px;flex-shrink:0;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step.done .step-h .no{background:var(--green)}
+  .step-h .bd{flex:1;min-width:0}
+  .step-h .ti,.step-h .mt{display:block}
+  .step-h .ti{font-size:15.5px;font-weight:700;line-height:1.45}
+  .step-h .mt{font-size:11.5px;color:var(--sub);margin-top:2px}
+  .step-h .ar{font-size:11px;color:var(--sub);transition:transform .2s}
+  .step.open .step-h .ar{transform:rotate(90deg)}
+  .step-b{display:none;padding:0 16px 16px}
+  .step.open .step-b{display:block}
+  .step-h:focus-visible{outline:3px solid var(--blue);outline-offset:-2px}
+
+  .step p{font-size:13.5px;line-height:1.9;margin-bottom:10px}
+  .step ul{margin:0 0 10px 19px}
+  .step li{font-size:13px;line-height:1.85;margin-bottom:5px}
+
+  /* 機関カード */
+  .org{display:grid;gap:9px;margin:12px 0}
+  .org-c{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#fafcff}
+  .org-c .top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+  .org-c .nm{font-size:15px;font-weight:700}
+  .org-c .fee{
+    font-family:var(--mono);font-size:12.5px;font-weight:700;
+    background:#eef4fc;color:var(--blue);border-radius:6px;padding:2px 9px;
+  }
+  .org-c .go{
+    margin-left:auto;font-size:11.5px;font-weight:700;background:var(--blue);color:#fff;
+    border-radius:99px;padding:6px 13px;text-decoration:none;white-space:nowrap;
+  }
+  .org-c .go:hover{filter:brightness(1.1)}
+  .org-c .ds{font-size:12.5px;color:var(--sub);line-height:1.75}
+  .org-c .tgt{font-size:11.5px;margin-top:5px}
+  .org-c .tgt b{color:var(--ink)}
+
+  /* チェック */
+  .chk{display:flex;align-items:center;gap:9px;margin-top:11px;
+       padding:10px 12px;background:#f1f8f4;border:1px solid #c6e6d4;border-radius:10px;
+       cursor:pointer;font-size:13px}
+  .chk input{width:19px;height:19px;accent-color:var(--green);cursor:pointer;flex-shrink:0;margin:0}
+
+  .warn{background:#fffaf0;border:1px solid #f3dcb0;border-radius:11px;
+        padding:11px 13px;font-size:12.5px;line-height:1.8;margin:10px 0}
+  .warn b{color:#9a6500}
+
+  /* 混雑のお知らせ */
+  .alert{
+    background:#fff8e8;border:2px solid #e8c98a;border-radius:16px;
+    padding:15px 17px;margin-bottom:18px;
+  }
+  html.dk .alert{background:#2b2515 !important;border-color:#5c4c24 !important}
+  .alert .al-h{font-size:15.5px;font-weight:700;color:#9a6500;margin-bottom:8px;line-height:1.5}
+  html.dk .alert .al-h{color:#f0c674}
+  .alert p{font-size:13.5px;line-height:1.85;margin-bottom:9px}
+  .alert ul{margin:0 0 9px 19px}
+  .alert li{font-size:13px;line-height:1.85;margin-bottom:6px}
+  .alert .al-f{font-size:11.5px;color:var(--sub);line-height:1.75;
+               border-top:1px dashed #e0c48a;padding-top:9px;margin-top:4px}
+  html.dk .alert .al-f{border-top-color:#5c4c24}
+
+  /* 機関カードの注記 */
+  .org-c .cond{
+    font-size:11.5px;line-height:1.75;margin-top:6px;padding:7px 9px;
+    background:#fff8e8;border:1px solid #ecd9ab;border-radius:8px;
+  }
+  html.dk .org-c .cond{background:#2b2515 !important;border-color:#5c4c24 !important}
+  .org-c .cond b{color:#9a6500}
+  html.dk .org-c .cond b{color:#f0c674}
+  .org-c .fee small{font-family:inherit;font-weight:400;font-size:10.5px}
+
+  /* リンク集 */
+  .lnk{display:grid;gap:8px}
+  .lnk a{
+    display:flex;align-items:center;gap:11px;padding:13px 14px;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    text-decoration:none;color:var(--ink);
+  }
+  .lnk a:hover{border-color:var(--blue);transform:translateX(3px)}
+  .lnk .ic{font-size:19px;flex-shrink:0}
+  .lnk .tx{flex:1;min-width:0}
+  .lnk .tx b{display:block;font-size:14px;font-weight:700}
+  .lnk .tx small{display:block;font-size:11.5px;color:var(--sub);margin-top:2px;line-height:1.6}
+  .lnk .gt{font-size:12px;color:var(--sub);flex-shrink:0}
+
+  .sec{margin-top:24px}
+  .sec h2{font-size:16px;font-weight:700;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+
+  /* 進み具合 */
+  .prog{
+    position:sticky;top:0;z-index:30;margin:0 -13px 16px;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:10px 16px;
+  }
+  .prog .lb{display:flex;justify-content:space-between;font-size:11.5px;color:var(--sub);margin-bottom:5px}
+  .prog .lb b{color:var(--ink)}
+  .prog .tr{height:7px;background:#e4eaf2;border-radius:99px;overflow:hidden}
+  .prog .tr i{display:block;height:100%;width:0;border-radius:99px;
+              background:linear-gradient(90deg,#7ec89c,var(--green));transition:width .4s}
+
+  .note{margin-top:22px;font-size:11.5px;color:var(--sub);line-height:1.85;
+        background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .note b{color:var(--ink)}
+  .tools{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap}
+  .tools button{flex:1;min-width:100px;padding:11px 6px;border:1px solid var(--line);
+    border-radius:99px;background:var(--card);color:var(--sub);
+    font-family:inherit;font-size:12.5px;cursor:pointer}
+  .tools button:hover{border-color:var(--blue);color:var(--blue)}
+  .foot{text-align:center;font-size:10px;color:var(--sub);padding:24px 10px 6px;
+        font-family:var(--mono);letter-spacing:.1em;line-height:2}
+
+
+  /* ===== ヘッダー画像 ===== */
+  .hero-img{margin:0 -13px;position:relative;line-height:0}
+  .hero-img img{width:100%;height:auto;display:block}
+
+  /* ===== 上部の操作バー ===== */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    margin:0 -13px;padding:7px 12px;
+    padding-top:calc(7px + env(safe-area-inset-top,0px));
+    display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;
+  }
+  .topbar::-webkit-scrollbar{display:none}
+  .tb{
+    display:inline-flex;align-items:center;gap:4px;flex-shrink:0;
+    padding:8px 11px;border:1px solid var(--line);border-radius:99px;
+    background:var(--card);color:var(--sub);font-family:inherit;font-size:12px;
+    cursor:pointer;white-space:nowrap;line-height:1;
+  }
+  .tb:hover{border-color:var(--blue);color:var(--blue)}
+  .tb:active{transform:translateY(1px)}
+  .tb:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+  .tb .ic{font-size:14px}
+  .tb-sz{display:inline-flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;flex-shrink:0}
+  .tb-sz button{
+    border:none;background:var(--card);color:var(--sub);font-family:inherit;
+    cursor:pointer;padding:8px 10px;line-height:1;
+  }
+  .tb-sz button.on{background:var(--blue);color:#fff}
+  .tb-sz .z1{font-size:10.5px}.tb-sz .z2{font-size:12.5px}.tb-sz .z3{font-size:15px}
+  .tb-ham{margin-left:auto;flex-shrink:0}
+
+  /* ===== 暗い表示 ===== */
+  html.dk{background:#0e141f}
+  html.dk body{background:#0e141f;color:#e2e8f0}
+  html.dk .step,html.dk .lnk a,html.dk .note,html.dk .tools button,
+  html.dk .topbar,html.dk .tb,html.dk .tb-sz button,html.dk .mnu-in{
+    background:#1a2332 !important;border-color:#2e3b50 !important;color:#e2e8f0;
+  }
+  html.dk .org-c{background:#222c3e !important;border-color:#33425b !important}
+  html.dk .step-h{color:#e2e8f0}
+  html.dk .step-h:hover{background:#222c3e}
+  html.dk .urgent{background:#2a1a1e !important;border-color:#5e3236 !important}
+  html.dk .warn{background:#2a2418 !important;border-color:#55472a !important}
+  html.dk .warn b{color:#f0c674}
+  html.dk .chk{background:#192a22 !important;border-color:#2f5440 !important}
+  html.dk .prog{background:rgba(14,20,31,.97) !important;border-bottom-color:#2e3b50}
+  html.dk .prog .tr{background:#2a3547}
+  html.dk .step-h .mt,html.dk .lnk .tx small,html.dk .org-c .ds,
+  html.dk .note,html.dk .foot,html.dk .prog .lb{color:#94a3b8 !important}
+  html.dk .org-c .fee{background:#1e3350;color:#8fc0ff}
+  html.dk .tb-sz button.on{background:var(--blue);color:#fff}
+  html.dk img{filter:none}
+
+  /* ===== 文字の大きさ ===== */
+  .zoomed{zoom:var(--z,1)}
+  @supports not (zoom:1){
+    .zoomed{transform:scale(var(--z,1));transform-origin:top center;
+            width:calc(100% / var(--z,1));margin-inline:auto}
+  }
+
+  /* ===== メニュー ===== */
+  .mnu{position:fixed;inset:0;z-index:90;display:none;background:rgba(10,18,30,.55)}
+  .mnu.open{display:block}
+  .mnu-in{
+    position:absolute;top:0;right:0;height:100%;width:min(90vw,340px);
+    background:var(--card);overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(28px + env(safe-area-inset-bottom,0px));
+    box-shadow:-8px 0 30px rgba(10,20,35,.3);
+    transform:translateX(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);
+  }
+  .mnu.open .mnu-in{transform:translateX(0)}
+  .mnu-h{display:flex;align-items:center;gap:9px;padding-bottom:14px;
+         border-bottom:1px solid var(--line);margin-bottom:14px}
+  .mnu-h b{flex:1;font-size:16px}
+  .mnu-x{background:none;border:none;font-size:21px;color:var(--sub);cursor:pointer;padding:4px}
+  .mnu-sec{font-size:10px;letter-spacing:.14em;color:var(--sub);margin:16px 2px 7px;font-weight:700}
+  .mnu-i{
+    display:flex;align-items:center;gap:11px;width:100%;
+    padding:13px 14px;margin-bottom:6px;border:1px solid var(--line);border-radius:12px;
+    background:transparent;color:inherit;font-family:inherit;font-size:14px;font-weight:700;
+    text-align:left;text-decoration:none;cursor:pointer;
+  }
+  .mnu-i:hover{border-color:var(--blue);transform:translateX(3px)}
+  .mnu-i .ic{font-size:19px;flex-shrink:0}
+  .mnu-i .tx{flex:1;min-width:0}
+  .mnu-i .tx small{display:block;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;line-height:1.6}
+  .mnu-qr{text-align:center;padding:14px 10px;background:#f1f8f3;border:1px solid #c9e4d3;
+          border-radius:12px;margin-bottom:6px}
+  html.dk .mnu-qr{background:#17281d !important;border-color:#2e5540 !important}
+  .mnu-qr img{width:150px;height:150px;border-radius:9px;background:#fff;padding:6px}
+  .mnu-qr .cap{font-size:11.5px;color:var(--sub);margin-top:7px;line-height:1.7}
+
+  /* ===== ダイアログ ===== */
+  .dlg{position:fixed;inset:0;z-index:100;display:none;background:rgba(10,18,30,.6);
+       padding:18px;overflow-y:auto}
+  .dlg.open{display:block}
+  .dlg-in{max-width:600px;margin:30px auto;background:var(--card);border-radius:18px;
+          padding:24px 22px calc(24px + env(safe-area-inset-bottom,0px));position:relative;
+          box-shadow:0 18px 50px rgba(10,20,35,.35)}
+  html.dk .dlg-in{background:#1a2332}
+  .dlg-x{position:absolute;top:13px;right:15px;background:none;border:none;
+         font-size:21px;color:var(--sub);cursor:pointer;padding:4px}
+  .dlg h2{font-size:18px;font-weight:700;margin-bottom:14px}
+  .dlg h3{font-size:14px;font-weight:700;color:var(--blue);margin:18px 0 6px}
+  .dlg p{font-size:13.5px;line-height:1.9;margin-bottom:9px}
+  .dlg ul{margin:0 0 9px 19px}
+  .dlg li{font-size:13px;line-height:1.85;margin-bottom:4px}
+  .dlg .sm{font-size:11.5px;color:var(--sub);line-height:1.8}
+  .credit-box{background:#f5f8fc;border:1px solid var(--line);border-radius:12px;
+              padding:14px 15px;margin-top:10px;font-size:13px;line-height:1.95}
+  html.dk .credit-box{background:#222c3e !important;border-color:#33425b !important}
+  .credit-box .ro{display:flex;gap:10px;margin-bottom:7px}
+  .credit-box .ro:last-child{margin-bottom:0}
+  .credit-box .lb{width:96px;flex-shrink:0;font-size:11.5px;color:var(--sub);padding-top:2px}
+  .credit-box .vl{flex:1;min-width:0;font-weight:700}
+  .credit-box .vl small{display:block;font-size:11px;color:var(--sub);font-weight:400;margin-top:1px}
+
+
+
+  /* ===== 書類ごとの対応 ===== */
+  .doc-tab{display:flex;gap:6px;margin:12px 0 11px}
+  .doc-tab button{
+    flex:1;padding:11px 6px;border:1.5px solid var(--line);border-radius:11px;
+    background:var(--card);color:var(--sub);font-family:inherit;
+    font-size:13px;font-weight:700;cursor:pointer;line-height:1.4;
+  }
+  html.dk .doc-tab button{background:#1a2332 !important;border-color:#2e3b50 !important}
+  .doc-tab button:hover{border-color:var(--blue)}
+  .doc-tab button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  html.dk .doc-tab button.on{background:var(--blue) !important;border-color:var(--blue) !important;color:#fff}
+  .doc-p{display:none}
+  .doc-p.on{display:block}
+
+  .fee-t{
+    width:100%;border-collapse:collapse;margin:11px 0;font-size:13px;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .fee-t th,.fee-t td{border-bottom:1px solid var(--line);padding:9px 11px;
+                      text-align:left;line-height:1.7;vertical-align:top}
+  .fee-t th{background:#f2f6fb;font-weight:700;font-size:12px;color:var(--blue)}
+  html.dk .fee-t th{background:#222c3e !important;color:#8fc0ff}
+  html.dk .fee-t td{border-color:#2e3b50}
+  .fee-t tr:last-child th,.fee-t tr:last-child td{border-bottom:none}
+  .fee-t .y{font-family:var(--mono);font-weight:700;white-space:nowrap;text-align:right}
+  .fee-t .free{color:var(--green)}
+
+  .urg-call{
+    background:#fff3f3;border:2px solid #f0bcbc;border-radius:12px;
+    padding:13px 15px;margin:12px 0;
+  }
+  html.dk .urg-call{background:#2a1a1e !important;border-color:#5e3236 !important}
+  .urg-call .ti{font-size:14px;font-weight:700;color:var(--red);margin-bottom:6px}
+  .urg-call .tel{
+    display:block;font-family:var(--mono);font-size:23px;font-weight:700;
+    color:var(--red);text-decoration:none;letter-spacing:.02em;margin:4px 0;
+  }
+  .urg-call .sub2{font-size:12px;color:var(--sub);line-height:1.75}
+
+  /* ===== サイバー脅威マップの説明 ===== */
+  .cm-lead{font-size:13.5px;line-height:1.9;margin-bottom:14px}
+  .cm-note{
+    background:#eef4fc;border:1px solid #c9ddf3;border-radius:12px;
+    padding:12px 14px;font-size:12.5px;line-height:1.85;margin:12px 0;
+  }
+  html.dk .cm-note{background:#1a2740 !important;border-color:#2c4468 !important}
+  .cm-note b{color:var(--blue)}
+  html.dk .cm-note b{color:#8fc0ff}
+
+  .cm-list{display:grid;gap:9px;margin:14px 0}
+  .cm-i{
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);
+  }
+  html.dk .cm-i{background:#1a2332 !important;border-color:#2e3b50 !important}
+  .cm-i .hd{display:flex;align-items:center;gap:10px;padding:11px 13px}
+  .cm-i .cd{
+    font-family:var(--mono);font-size:14px;font-weight:700;
+    padding:4px 10px;border-radius:7px;flex-shrink:0;min-width:54px;text-align:center;
+    color:#fff;
+  }
+  .cm-i .bd{flex:1;min-width:0}
+  .cm-i .en{font-size:11px;color:var(--sub);font-family:var(--mono);letter-spacing:.03em}
+  .cm-i .ja{font-size:14.5px;font-weight:700;line-height:1.45}
+  .cm-i .ds{
+    font-size:12.5px;line-height:1.85;padding:0 13px 12px;color:var(--sub);
+  }
+  .cm-i .ex{
+    margin:0 13px 12px;padding:9px 11px;border-radius:9px;
+    background:#f7faff;border:1px solid #e0eaf7;font-size:12px;line-height:1.8;
+  }
+  html.dk .cm-i .ex{background:#222c3e !important;border-color:#33425b !important}
+  .cm-i .ex b{color:var(--ink)}
+  html.dk .cm-i .ex b{color:#e2e8f0}
+
+  .cm-read{
+    background:#fffaf0;border:1px solid #f3dcb0;border-radius:12px;
+    padding:13px 15px;margin:14px 0;font-size:13px;line-height:1.9;
+  }
+  html.dk .cm-read{background:#2a2418 !important;border-color:#55472a !important}
+  .cm-read h4{font-size:14px;font-weight:700;color:#9a6500;margin-bottom:7px}
+  html.dk .cm-read h4{color:#f0c674}
+  .cm-read ul{margin:0 0 0 19px}
+  .cm-read li{font-size:12.5px;line-height:1.85;margin-bottom:5px}
+
+  @media(max-width:430px){
+    .tb .tx{display:none}
+    .tb{padding:8px 9px}
+    .tb .ic{font-size:16px}
+  }
+  @media print{
+    .topbar,.mnu,.dlg{display:none !important}
+  }
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);
+    background:var(--ink);color:#fff;padding:10px 19px;border-radius:99px;
+    font-size:13px;z-index:200;opacity:0;pointer-events:none;
+    transition:opacity .25s,transform .25s}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:430px){
+    .hero h1{font-size:21px}
+    .step-h .ti{font-size:14.5px}
+    .org-c .go{margin-left:0;margin-top:5px}
+  }
+  @media print{
+    .tools,.toast,.prog{display:none}
+    .step-b{display:block !important}
+    body{padding-bottom:0;background:#fff}
+    .step,.org-c,.lnk a{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+
+  /* ===== 機関から連絡が来たら ===== */
+  .step ol{margin:0 0 10px 21px}
+  .step ol li{font-size:13px;line-height:1.85;margin-bottom:6px}
+  .ntc-lead{font-size:13px;line-height:1.85;color:var(--sub);margin-bottom:11px}
+  .ntc-t td,.ntc-t th{vertical-align:top;font-size:12px;line-height:1.7}
+  .ntc-t td:first-child{white-space:nowrap;font-weight:700}
+  .ntc-sc{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .ntc-sc table{min-width:560px}
+  .tel{display:inline-block;font-family:var(--mono);font-weight:700;background:#eef3fb;border:1px solid var(--line);border-radius:7px;padding:0 7px}
+  html.dk .tel{background:#223049}
+
+  /* ===== 被害防止ツール ===== */
+  .tl input[type=text],.tl textarea{width:100%;max-width:520px;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:#fff;color:inherit;font-family:inherit}
+  html.dk .tl input[type=text],html.dk .tl textarea{background:#141c2b}
+  .tl label.lb{font-size:13px;font-weight:700;display:block;margin:8px 0 3px}
+  .tl-b{display:inline-block;min-height:44px;padding:8px 15px;margin:8px 8px 4px 0;border-radius:10px;border:2px solid var(--line);background:#fff;color:inherit;font-size:13.5px;cursor:pointer;font-family:inherit}
+  html.dk .tl-b{background:#141c2b}
+  .tl-b.p{background:var(--blue);border-color:var(--blue);color:#fff}
+  .tk-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 10px}
+  .tk{display:flex;align-items:center;gap:9px;min-height:44px;font-size:13px;cursor:pointer}
+  .tk input{width:20px;height:20px;flex-shrink:0;margin:0;accent-color:var(--blue)}
+  .act{border-left:5px solid var(--line);padding:7px 11px;margin:7px 0;border-radius:7px;background:#f4f7fb;font-size:13px;line-height:1.75}
+  html.dk .act{background:#1b2536}
+  .act.a1{border-color:#b42318}.act.a2{border-color:#c2410c}.act.a3{border-color:#1864ab}
+  .u{display:inline-block;margin-right:6px;padding:0 8px;border-radius:8px;color:#fff;font-size:12px;font-weight:700}
+  .u1{background:#b42318}.u2{background:#c2410c}.u3{background:#1864ab}
+  .rk{display:inline-block;min-width:34px;text-align:center;padding:1px 6px;border-radius:8px;font-weight:700;font-size:12px;color:#fff}
+  .rk-SS{background:#8f1d14}.rk-A{background:#c2410c}.rk-B{background:#8a5a00}.rk-C{background:#1864ab}.rk-D{background:#5b6573}.rk-E{background:transparent;color:inherit;border:1.5px solid var(--sub)}
+  .tl-r{font-size:15px;font-weight:700;margin:8px 0}
+  .tl-mono{font-family:var(--mono);letter-spacing:.03em}
+  @media print{#secShield{display:none}}
+  .tl input[type=password]{width:100%;max-width:520px;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:#fff;color:inherit;font-family:var(--mono)}
+  html.dk .tl input[type=password]{background:#141c2b}
+  .tl input[type=range]{width:100%;max-width:420px;min-height:32px}
+  .tl-b.d{border-color:#b42318;color:#b42318}
+  .pwm{display:flex;gap:4px;margin:8px 0}.pwm i{flex:1;height:12px;border-radius:6px;background:var(--line)}
+  .pwm.l1 i.on{background:#b42318}.pwm.l2 i.on{background:#d9480f}.pwm.l3 i.on{background:#b7791f}.pwm.l4 i.on{background:#2f9e44}.pwm.l5 i.on{background:#1b7a3d}
+  .pw-item{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-top:1px solid var(--line);padding:8px 0}
+  .pw-item b{flex:1 1 140px;word-break:break-all}.pw-item .pv{flex:1 1 140px;word-break:break-all;font-family:var(--mono)}
+  .pw-tabs{margin:6px 0 10px}
+  .dlg-wide .dlg-in{max-width:900px}
+  .ls-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+  .ls-ctl .lb2{font-size:12.5px;font-weight:700;margin-right:2px}
+  .seg{display:inline-flex;flex-wrap:wrap;gap:4px}
+  .seg button{min-height:40px;padding:5px 12px;border-radius:10px;border:2px solid var(--line);background:#fff;color:inherit;font-size:13px;cursor:pointer;font-family:inherit}
+  html.dk .seg button{background:#141c2b}
+  .seg button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .ls-card{border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin:8px 0;font-size:13px;line-height:1.75}
+  .ls-card .hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:3px}
+  .ls-card .hd b{font-size:14.5px}
+  .ls-card .mt2{color:var(--sub);font-size:12px}
+  .ls-card dl{margin:4px 0 0}.ls-card dt{font-weight:700;display:inline}.ls-card dd{display:inline;margin:0}
+  .ls-card dd:after{content:"";display:block;margin-bottom:3px}
+  .ls-cn{font-weight:700;font-size:15px;margin:14px 0 4px;color:var(--blue)}
+  .ls-sum{font-size:12.5px;color:var(--sub);margin:4px 0}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する">
+      <span class="ic">🔄</span><span class="tx">更新</span></button>
+    <button type="button" class="tb" onclick="doShare()" aria-label="共有する">
+      <span class="ic">📤</span><span class="tx">共有</span></button>
+    <button type="button" class="tb" onclick="doCopyText()" aria-label="内容をコピー">
+      <span class="ic">📋</span><span class="tx">コピー</span></button>
+    <button type="button" class="tb" onclick="doCopyUrl()" aria-label="リンクをコピー">
+      <span class="ic">🔗</span><span class="tx">リンク</span></button>
+    <button type="button" class="tb" id="tbTheme" onclick="doTheme()" aria-label="表示を切り替える">
+      <span class="ic">🌙</span><span class="tx">暗く</span></button>
+    <span class="tb-sz" role="group" aria-label="文字の大きさ">
+      <button type="button" class="z1" data-z="s" onclick="doSize('s')" aria-label="小さく">小</button>
+      <button type="button" class="z2" data-z="m" onclick="doSize('m')" aria-label="標準">中</button>
+      <button type="button" class="z3" data-z="l" onclick="doSize('l')" aria-label="大きく">大</button>
+    </span>
+    <button type="button" class="tb tb-ham" onclick="openMenu()" aria-label="メニュー">
+      <span class="ic">☰</span></button>
+  </div>
+
+  <div class="hero-img">
+    <img src="leak-hero.jpg"
+         alt="DATA BREACH RESPONSE GUIDE 個人情報が漏れたら。いま何を、どの順番ですべきか。手数料や手順をまとめました。DWA防災情報センター">
+  </div>
+
+<div class="zoomed" id="zoomArea">
+
+  <div class="prog">
+    <div class="lb"><span>対応の進み具合</span><b id="pn">0 / 8</b></div>
+    <div class="tr"><i id="pb"></i></div>
+  </div>
+
+  <div class="urgent">
+    <h2>⚠️ 最優先は「名義を使われないこと」</h2>
+    <p>漏れた情報そのものは取り戻せません。だから、<b>あなたの名義で勝手に契約されるのを防ぐ</b>ことに絞ります。<br>
+    とくに<b>運転免許証の画像</b>が流出した場合は、カードやローン、携帯回線を他人に契約されるおそれがあります。</p>
+  </div>
+
+  <div class="alert">
+    <div class="al-h">⏳ いま、信用情報機関の受付が混み合っています</div>
+    <p>タイムズカーの情報漏洩（2026年9月28日公表）を受けて申込が集中し、
+    <b>CIC・JICC・全国銀行個人信用情報センターの3機関すべてが、公式に遅延を告知</b>しています。
+    手順2に進む前に、次の3点をご確認ください。</p>
+    <ul>
+      <li><b>申込済みなら、出し直さないでください。</b>
+      登録は<b>5年間</b>有効で、数日から数週間の遅れで効力が落ちるものではありません。
+      重複して申し込むと、ご自身の順番が後ろに回ります</li>
+      <li><b>JICCは、登録が完了しても完了メールとプッシュ通知が届かない場合があります。</b>
+      スマホアプリのトップにある「申込状況と登録結果の確認」を開き、
+      ステータスが「コメント登録完了」になっていれば、もう済んでいます</li>
+      <li><b>待っている間に、手順3を先に済ませてください。</b>
+      カードと銀行の利用通知をオンにするのが、いま<b>最も早く効きます</b></li>
+    </ul>
+    <div class="al-f">この案内は<b>2026年10月9日</b>時点で各機関が公表している内容にもとづいています。
+    状況は日々変わりますので、申し込む前に公式ページでご確認ください。</div>
+  </div>
+
+  <div id="steps"></div>
+
+  <div class="sec" id="secNotice">
+    <h2>📨 金融機関・省庁・警察から「連絡」が来たら</h2>
+    <div class="urgent">
+      <h2>⚠️ 連絡が来たこと自体を、信用しないでください</h2>
+      <p>情報漏洩のあとは、<b>本物そっくりの通知を装った詐欺</b>が増えます。
+      メール・SMS・電話・書面のどれでも、<b>相手の連絡手段は使わず、自分で調べた窓口で確かめる</b>のが基本です。
+      <b>「急いで」「秘密にして」と言われたら、それ自体が危険信号</b>です。</p>
+    </div>
+    <div id="notices"></div>
+    <div class="lnk" id="noticeLinks" style="margin-top:12px"></div>
+    <div class="note" style="margin-top:12px">
+      ここに書いた内容は、官公庁・業界団体の一般的な注意喚起にもとづく目安です。
+      「本物は〜しない」という傾向には例外もあります。<b>迷ったら、必ず公式の窓口で確認してください。</b>
+      電話番号や受付時間は変更されることがあります。
+    </div>
+  </div>
+
+  <div class="sec" id="secShield">
+    <h2>🛡 被害防止ツール(これからの備え)</h2>
+    <p class="ntc-lead">入力した内容は、保存も送信もしません(再読み込みで消えます)。判定は目安で、安全を保証するものではありません。</p>
+
+    <div class="step" id="t1"><button type="button" class="step-h" onclick="toggleStep('t1')">
+      <span class="no">1</span><span class="bd"><span class="ti">使っているサービスが、漏洩事案に入っていないか照合する</span>
+      <span class="mt">一覧から選ぶと、該当する事案と対応策を表示します</span></span><span class="ar">▶</span></button>
+      <div class="step-b tl">
+        <p>2026年に公表された主要な事案の一覧です。利用中・登録中のものを選んでください。<button type="button" class="tl-b" onclick="openList('')">🌏 世界版の一覧を開く</button></p>
+        <label class="lb" for="svQ">機関名で絞り込み</label>
+        <input id="svQ" type="text" autocomplete="off" placeholder="例:JR東日本、ローソン">
+        <div><button type="button" class="tl-b" id="svClr">選択をすべて外す</button></div>
+        <div class="tk-list" id="svList" style="max-height:260px;overflow:auto"></div>
+        <div id="svOut" aria-live="polite"></div>
+        <p class="sm" style="font-size:12px;color:var(--sub)">掲載は主要な事案のみで、2026年10月10日時点です。<b>一覧にないからといって、漏れていないとは限りません。</b>該当したら、その機関の公式サイトを自分で開いて、本人向けのお知らせを確認してください。</p>
+      </div></div>
+
+    <div class="step" id="t2"><button type="button" class="step-h" onclick="toggleStep('t2')">
+      <span class="no">2</span><span class="bd"><span class="ti">怪しい連絡(メール・電話・書面・SMS)をチェックする</span>
+      <span class="mt">当てはまる項目を選ぶと、危険度を判定します</span></span><span class="ar">▶</span></button>
+      <div class="step-b tl">
+        <div class="tk-list" id="ckList"></div>
+        <div id="ckOut" aria-live="polite"></div>
+        <p style="margin-top:14px"><b>URLの構造チェック</b>(開かずに調べます)</p>
+        <label class="lb" for="urlIn">調べたいURLを貼り付け</label>
+        <input id="urlIn" type="text" autocomplete="off" spellcheck="false" class="tl-mono">
+        <div><button type="button" class="tl-b p" id="urlBtn">調べる</button></div>
+        <div id="urlOut" aria-live="polite"></div>
+      </div></div>
+
+    <div class="step" id="t3"><button type="button" class="step-h" onclick="toggleStep('t3')">
+      <span class="no">3</span><span class="bd"><span class="ti">家族の合言葉と、家族への注意喚起</span>
+      <span class="mt">特殊詐欺から、離れて暮らす家族を守ります</span></span><span class="ar">▶</span></button>
+      <div class="step-b tl">
+        <p>電話で本人かどうか確かめるための合言葉です。決めたら<b>口頭で共有</b>し、スマホにメモしないでください。</p>
+        <div><button type="button" class="tl-b p" id="fmGen">合言葉を作る</button></div>
+        <label class="lb" for="fmW">合言葉(自由に書き換えられます)</label>
+        <input id="fmW" type="text" autocomplete="off" class="tl-mono">
+        <label class="lb" for="fmM">家族に送る文面</label>
+        <textarea id="fmM" rows="9" autocomplete="off"></textarea>
+        <div><button type="button" class="tl-b" id="fmCopy">📋 コピー</button><button type="button" class="tl-b" id="fmShare">📤 共有</button></div>
+      </div></div>
+  </div>
+
+  <div class="sec">
+    <h2>🏛 公的機関の最新情報</h2>
+    <div class="lnk" id="links"></div>
+  </div>
+
+  <div class="sec">
+    <h2>☎️ 困ったときの相談先</h2>
+    <div class="lnk" id="consult"></div>
+  </div>
+
+  <div class="note">
+    <b>このページについて</b><br>
+    手数料や手続きの方法は変更されることがあります。<b>申し込む前に、必ず各機関の公式ページで最新の内容をご確認ください。</b><br><br>
+    <b>最終確認日：2026年10月9日。</b>金額と申込方法は、この日にCIC・JICC・全国銀行個人信用情報センターの公式ページで確認したものです。
+    同日時点で、3機関とも申込の集中による遅延を公式に告知しています。<br><br>
+    このページは一般的な情報の提供であり、法的な助言ではありません。実際の被害が生じた場合や、賠償請求をお考えの場合は、弁護士にご相談ください。<br><br>
+    チェックの記録は、お使いのブラウザにのみ保存されます。外部へ送信されることはありません。
+  </div>
+
+  <div class="tools">
+    <button type="button" onclick="window.print()">🖨 印刷</button>
+    <button type="button" onclick="resetAll()">↺ チェックを消す</button>
+  </div>
+
+  <div class="foot">
+    DWA 防災情報センター<br>
+    Tool development: Kouji Furutani&nbsp;&nbsp;|&nbsp;&nbsp;Built with Claude (Anthropic)
+  </div>
+
+</div><!-- /zoomArea -->
+</div><!-- /wrap -->
+
+
+<!-- ===== メニュー ===== -->
+<div class="mnu" id="mnu" onclick="if(event.target===this)closeMenu()">
+  <nav class="mnu-in">
+    <div class="mnu-h">
+      <span style="font-size:22px">🛡</span>
+      <b>メニュー</b>
+      <button class="mnu-x" onclick="closeMenu()" aria-label="閉じる">✕</button>
+    </div>
+
+    <div class="mnu-sec">// 連絡が来たら</div>
+    <button type="button" class="mnu-i" onclick="goNotice()">
+      <span class="ic">📨</span>
+      <span class="tx">機関から連絡が来たら<small>金融機関・省庁・警察の確認手順と対処</small></span></button>
+
+    <div class="mnu-sec">// アプリ</div>
+    <button type="button" class="mnu-i" id="mnuInstall" onclick="doInstall()">
+      <span class="ic">📲</span>
+      <span class="tx">アプリとしてインストール<small id="mnuInstallSub">ホーム画面から開けます</small></span></button>
+
+    <div class="mnu-sec">// 情報漏洩一覧</div>
+    <button type="button" class="mnu-i" onclick="openList('')">
+      <span class="ic">🌏</span>
+      <span class="tx">情報漏洩企業一覧2026 世界版<small>検索・並べ替え・重大度ランク</small></span></button>
+
+    <div class="mnu-sec">// これからの備え</div>
+    <button type="button" class="mnu-i" onclick="goShield()">
+      <span class="ic">🛡</span>
+      <span class="tx">被害防止ツール<small>照合・怪しい連絡チェック・家族の合言葉</small></span></button>
+
+    <div class="mnu-sec">// パスワード</div>
+    <button type="button" class="mnu-i" onclick="openPw('check')">
+      <span class="ic">🔍</span>
+      <span class="tx">パスワード危険度判定<small>強さと、破られるまでの目安</small></span></button>
+    <button type="button" class="mnu-i" onclick="openPw('gen')">
+      <span class="ic">🎲</span>
+      <span class="tx">パスワード生成<small>複雑なパスワードをランダムに作成</small></span></button>
+    <button type="button" class="mnu-i" onclick="openPw('vault')">
+      <span class="ic">🔐</span>
+      <span class="tx">パスワード保管庫<small>機関名とパスワードを暗号化して保管(20件)</small></span></button>
+
+    <div class="mnu-sec">// 関連サイト</div>
+    <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
+      <span class="ic">🏠</span>
+      <span class="tx">DWA防災情報センター<small>防災情報の総合サイト</small></span></a>
+    <a class="mnu-i" href="https://cybermap.kaspersky.com/ja" target="_blank" rel="noopener">
+      <span class="ic">🌐</span>
+      <span class="tx">サイバー脅威マップ<small>世界の攻撃をリアルタイムで表示（Kaspersky）</small></span></a>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgCyber')">
+      <span class="ic">📖</span>
+      <span class="tx">脅威マップの見方<small>OAS・ODS・MAVなど9項目の意味</small></span></button>
+
+    <div class="mnu-sec">// 公式LINE</div>
+    <div class="mnu-qr">
+      <img src="https://qr-official.line.me/gs/M_187ukqci_GW.png?oat_content=qr"
+           alt="DWA防災情報センター 公式LINEの友だち追加用QRコード" loading="lazy">
+      <div class="cap">QRコードを読み取ると<br>公式LINEに登録できます</div>
+    </div>
+
+    <div class="mnu-sec">// このページについて</div>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgPriv')">
+      <span class="ic">🔒</span>
+      <span class="tx">プライバシーポリシー<small>情報の取り扱いについて</small></span></button>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgCredit')">
+      <span class="ic">📝</span>
+      <span class="tx">制作について<small>作成者と制作支援</small></span></button>
+  </nav>
+</div>
+
+<!-- ===== プライバシーポリシー ===== -->
+<div class="dlg" id="dlgPriv" onclick="if(event.target===this)closeDlg('dlgPriv')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgPriv')" aria-label="閉じる">✕</button>
+    <h2>🔒 プライバシーポリシー</h2>
+
+    <h3>1. このページが取得する情報</h3>
+    <p>このページは、<b>個人を特定する情報を一切取得しません。</b>
+    氏名、住所、連絡先などの入力欄はなく、サーバーへの送信も行いません(パスワードツールの入力内容も、端末の中だけで処理します)。</p>
+
+    <h3>2. 端末に保存するもの</h3>
+    <p>次の3つだけを、お使いのブラウザに保存します。</p>
+    <ul>
+      <li>対処手順のチェック状況</li>
+      <li>表示の設定（明るさ・文字の大きさ）</li>
+      <li>パスワード保管庫を作成した場合のみ、暗号化した保管データ</li>
+    </ul>
+    <p>いずれも<b>この端末の中だけ</b>に残り、外部へ送信されることはありません。
+    ブラウザの閲覧データを削除すると、これらも消えます。</p>
+    <p>「被害防止ツール」に入力した内容(選んだ機関、URL、合言葉など)は、<b>保存も送信もしません。</b>再読み込みすると消えます。</p>
+    <p>パスワードツールの「判定」「生成」は、入力・結果を保存も送信もしません。「保管庫」を作成した場合だけ、マスターパスワードで暗号化した暗号文(機関名とパスワード、最大20件)を、このブラウザのローカルストレージ(キー名 pwvault.v1)に保存します。<b>マスターパスワードは保存されません。</b>削除は、保管庫の「全削除」またはブラウザの設定から行えます。端末内の保存は絶対に安全とは言えないため、重要なパスワードは専用のパスワードマネージャー等をご利用ください。</p>
+    <p>アプリとしてインストールした場合は、ページの本体(画面・画像・アイコン)が、オフラインで表示するために端末へ保存されます。個人情報は含まれません。</p>
+
+    <h3>3. 外部サイトへのリンク</h3>
+    <p>信用情報機関、公的機関、相談先などへのリンクを掲載しています。
+    リンク先での情報の取り扱いは、それぞれのサイトの方針が適用されます。</p>
+
+    <h3>4. 掲載内容について</h3>
+    <p>手数料や手続きの方法は変更されることがあります。
+    <b>申し込む前に、必ず各機関の公式ページで最新の内容をご確認ください。</b></p>
+    <p>このページは一般的な情報の提供であり、<b>法的な助言ではありません。</b>
+    実際の被害が生じた場合や、賠償請求をお考えの場合は、弁護士にご相談ください。</p>
+
+    <h3>5. お問い合わせ</h3>
+    <p>DWA防災情報センター<br>
+    <a href="https://bousai0111.info/" target="_blank" rel="noopener"
+       style="color:var(--blue);font-weight:700">bousai0111.info</a></p>
+
+    <p class="sm">制定日：2026年10月<br>内容は必要に応じて見直すことがあります。</p>
+  </div>
+</div>
+
+<!-- ===== 制作について ===== -->
+<div class="dlg" id="dlgCredit" onclick="if(event.target===this)closeDlg('dlgCredit')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgCredit')" aria-label="閉じる">✕</button>
+    <h2>📝 制作について</h2>
+
+    <div class="credit-box">
+      <div class="ro"><span class="lb">ツール作成</span>
+        <span class="vl">古谷 浩二<small>Kouji Furutani</small></span></div>
+      <div class="ro"><span class="lb">運営</span>
+        <span class="vl">DWA防災情報センター<small>長岡京市認定 市民活動団体</small></span></div>
+      <div class="ro"><span class="lb">制作支援</span>
+        <span class="vl">Claude<small>Anthropic（アンソロピック）社のAI</small></span></div>
+    </div>
+
+    <h3>制作の経緯</h3>
+    <p>2026年9月に発生した大規模な個人情報漏洩を受け、
+    <b>被害に遭った方が何をすべきか分からない</b>という状況を目にして作成しました。</p>
+    <p>企業名の一覧ではなく、<b>いま手を動かせること</b>に絞っています。</p>
+
+    <h3>制作支援について</h3>
+    <p>構成の設計、情報の取捨選択、内容の確認は作成者が行い、
+    <b>Claude</b>が調査と実装を担当しました。</p>
+    <p>掲載内容は、各機関の公式ページで確認したうえで記載しています。</p>
+
+    <h3>出典</h3>
+    <ul>
+      <li>CIC（指定信用情報機関）</li>
+      <li>JICC（日本信用情報機構）</li>
+      <li>全国銀行個人信用情報センター</li>
+      <li>個人情報保護委員会</li>
+      <li>IPA 情報処理推進機構</li>
+      <li>警察庁 サイバー警察局</li>
+    </ul>
+
+    <p class="sm">© 2026 DWA 防災情報センター</p>
+  </div>
+</div>
+
+
+<!-- ===== サイバー脅威マップの説明書 ===== -->
+<div class="dlg" id="dlgCyber" onclick="if(event.target===this)closeDlg('dlgCyber')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgCyber')" aria-label="閉じる">✕</button>
+    <h2>📖 サイバー脅威マップの見方</h2>
+
+    <p class="cm-lead">Kaspersky社の
+    <a href="https://cybermap.kaspersky.com/ja" target="_blank" rel="noopener"
+       style="color:var(--blue);font-weight:700">Cyberthreat Real-Time Map</a>
+    は、同社の製品が<b>検知・ブロックした脅威</b>を地図上にリアルタイムで表示するものです。</p>
+
+    <div class="cm-note">
+      <b>数字は「攻撃の総数」ではありません。</b><br>
+      表示されるのは、Kaspersky製品を使っている人のところで検知された分だけです。
+      世界で起きている攻撃の一部にすぎず、<b>傾向をつかむための目安</b>とお考えください。
+    </div>
+
+    <h3>画面右の9項目</h3>
+    <p style="font-size:12.5px;color:var(--sub);margin-bottom:4px">
+    それぞれ「どうやって見つけたか」を表しています。数字はその日の検知件数です。</p>
+
+    <div class="cm-list" id="cmList"></div>
+
+    <div class="cm-read">
+      <h4>💡 数字の読み方</h4>
+      <ul>
+        <li><b>OASが最も多いのが普通です。</b>ファイルを開く・保存するたびに動く、常時監視だからです</li>
+        <li><b>WAVが増えていたら</b>、危険なサイトや改ざんされたページが広がっているサインです</li>
+        <li><b>MAVとKASが同時に増えたら</b>、大規模なばらまきメールが流れている可能性があります</li>
+        <li><b>IDSの急増</b>は、ネットワークへの直接攻撃が活発になっている合図です</li>
+        <li><b>RMWが出たら要注意。</b>件数は少なくても、1件あたりの被害が甚大です</li>
+        <li><b>VULが少ないのは良いこと</b>ではありません。更新を怠った機器が見つかっていないだけ、という場合もあります</li>
+      </ul>
+    </div>
+
+    <h3>日常の備えにつなげるなら</h3>
+    <ul>
+      <li><b>OAS・ODS</b>が多い → 不審なファイルを開かない。USBメモリの扱いに注意</li>
+      <li><b>MAV・KAS</b>が多い → メールの添付とリンクを安易に開かない</li>
+      <li><b>WAV</b>が多い → 見覚えのないサイトを避ける。ブラウザを最新に</li>
+      <li><b>IDS・VUL</b>が多い → ルーターとOSの更新。初期パスワードを変える</li>
+      <li><b>BAD</b>が多い → 家電やカメラが乗っ取られていないか確認</li>
+      <li><b>RMW</b>が多い → バックアップを<b>切り離して</b>保管</li>
+    </ul>
+
+    <p class="sm" style="margin-top:14px">
+    ※ 各項目の定義は、Kaspersky社の公表内容にもとづいています。<br>
+    ※ 同種のマップは他社も公開しています（Check Point、Fortinet、NETSCOUTなど）。
+    見比べると、偏りに気づけます。</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== 情報漏洩企業一覧2026 世界版 ===== -->
+<div class="dlg dlg-wide" id="dlgList" onclick="if(event.target===this)closeDlg('dlgList')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgList')" aria-label="閉じる">✕</button>
+    <h2>🌏 情報漏洩企業一覧2026 世界版</h2>
+    <p class="ls-sum">2026年10月10日時点の報道にもとづく主要事案です。件数は人数ではなく件数・アカウント数の場合があります。「主張」は攻撃者側の数字で、確認されていません。</p>
+    <label for="lsQ" style="font-size:13px;font-weight:700">検索(機関名・国・漏洩内容)</label>
+    <input id="lsQ" type="text" autocomplete="off" placeholder="例:JR東日本、医療、パスワード、米国" style="width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit">
+    <div class="ls-ctl"><span class="lb2" id="lsLb1">並べ替え</span><span class="seg" role="group" aria-labelledby="lsLb1" id="lsSort">
+      <button type="button" data-o="kana" aria-pressed="false">あいうえお順</button>
+      <button type="button" data-o="date" aria-pressed="true">日付順</button>
+      <button type="button" data-o="size" aria-pressed="false">漏洩規模順</button>
+      <button type="button" data-o="sev" aria-pressed="false">重大度順</button></span></div>
+    <div class="ls-ctl"><span class="lb2" id="lsLb2">表示</span><span class="seg" role="group" aria-labelledby="lsLb2" id="lsMode">
+      <button type="button" data-m="all" aria-pressed="true">全体</button>
+      <button type="button" data-m="country" aria-pressed="false">国別</button></span></div>
+    <div class="ls-sum" id="lsInfo" aria-live="polite"></div>
+    <div class="ls-ctl"><button type="button" class="tl-b p" id="lsCopy">📋 結果をコピー</button><button type="button" class="tl-b" id="lsShare">📤 結果を共有</button></div>
+    <details><summary style="cursor:pointer;font-size:13px;min-height:36px">重大度ランク(SS・A・B・C・D・E)の基準</summary>
+      <p class="sm" style="font-size:12px;color:var(--sub)">規模(件数)・情報の機微さ(旅券・免許・口座・医療など)・影響範囲(ランサムウェア、多数機関への波及など)からの目安で、公的な区分ではありません。規模が未確認の事案は低めに出るため暫定です。IDCフロンティアは多数の組織に波及しデータ復元が困難なため、手動でSSとしています。</p></details>
+    <div id="lsOut"></div>
+  </div>
+</div>
+
+<!-- ===== インストール方法 ===== -->
+<div class="dlg" id="dlgInstall" onclick="if(event.target===this)closeDlg('dlgInstall')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgInstall')" aria-label="閉じる">✕</button>
+    <h2>📲 アプリとしてインストール</h2>
+    <p>ホーム画面にアイコンを置いて、アプリのように開けます。一度開くと、画面と画像が端末に保存され、<b>ネットがつながらない場所でも表示</b>できます。</p>
+    <h3>iPhone / iPad(Safari)</h3>
+    <p>画面下の<b>共有ボタン(□に↑)</b>を押し、<b>「ホーム画面に追加」</b>を選びます。</p>
+    <h3>Android(Chrome)</h3>
+    <p>右上のメニュー(︙)から、<b>「アプリをインストール」</b>または<b>「ホーム画面に追加」</b>を選びます。</p>
+    <h3>パソコン(Chrome / Edge)</h3>
+    <p>アドレスバーの右にある<b>インストールのボタン</b>を押します。見当たらないときは、メニューから「アプリとしてインストール」を選びます。</p>
+    <h3>うまくいかないとき</h3>
+    <ul>
+      <li>LINE・Xなど、<b>アプリ内ブラウザでは追加できません</b>。右上のメニューから「ブラウザで開く」を選び、SafariやChromeで開き直してください。</li>
+      <li>インストールには、<b>HTTPSで公開されたページ</b>であることが必要です。ファイルを直接開いている場合は使えません。</li>
+      <li>FirefoxやSafariのパソコン版は、インストールに対応していないことがあります。</li>
+    </ul>
+    <p class="sm" style="font-size:12px;color:var(--sub)">アプリを削除するときは、ホーム画面のアイコンを長押しして、削除してください。</p>
+  </div>
+</div>
+
+<!-- ===== パスワードツール ===== -->
+<div class="dlg" id="dlgPw" onclick="if(event.target===this)closeDlg('dlgPw')">
+  <div class="dlg-in tl">
+    <button class="dlg-x" onclick="closeDlg('dlgPw')" aria-label="閉じる">✕</button>
+    <h2>🔑 パスワードツール</h2>
+    <div class="seg pw-tabs" role="group" aria-label="機能の切り替え" id="pwTabs">
+      <button type="button" data-p="check" aria-pressed="true">🔍 判定</button>
+      <button type="button" data-p="gen" aria-pressed="false">🎲 生成</button>
+      <button type="button" data-p="vault" aria-pressed="false">🔐 保管庫</button></div>
+
+    <div id="pwP_check">
+      <p class="sm" style="font-size:12px;color:var(--sub)">入力内容は、この端末のブラウザ内の計算だけに使い、保存も送信もしません。実際に使っているものそのものではなく、似た構成の例で試すと、より安心です。</p>
+      <label class="lb" for="pwIn">判定するパスワード</label>
+      <input id="pwIn" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div><button type="button" class="tl-b" id="pwShow" aria-pressed="false">👁 表示する</button><button type="button" class="tl-b" id="pwClr">消去</button></div>
+      <div id="pwRes" aria-live="polite"></div>
+    </div>
+
+    <div id="pwP_gen" hidden>
+      <p class="sm" style="font-size:12px;color:var(--sub)">ブラウザの暗号用乱数で生成します。保存はしません。</p>
+      <label class="lb" for="pwGl">文字数:<b id="pwGlv">20</b></label>
+      <input id="pwGl" type="range" min="8" max="64" value="20">
+      <div><label class="tk" style="display:inline-flex;margin-right:10px"><input type="checkbox" id="pwGU" checked>大文字</label><label class="tk" style="display:inline-flex;margin-right:10px"><input type="checkbox" id="pwGL" checked>小文字</label><label class="tk" style="display:inline-flex;margin-right:10px"><input type="checkbox" id="pwGD" checked>数字</label><label class="tk" style="display:inline-flex;margin-right:10px"><input type="checkbox" id="pwGS" checked>記号</label><label class="tk" style="display:inline-flex"><input type="checkbox" id="pwGX" checked>紛らわしい文字(Il1O0o)を除く</label></div>
+      <label class="lb" for="pwGo">生成結果</label>
+      <input id="pwGo" type="text" readonly autocomplete="off" class="tl-mono">
+      <div><button type="button" class="tl-b p" id="pwGen">生成する</button><button type="button" class="tl-b" id="pwGCopy">コピー(30秒後に消去を試みる)</button><button type="button" class="tl-b" id="pwGChk">判定にかける</button><button type="button" class="tl-b" id="pwGVault">保管庫の入力へ</button></div>
+      <div id="pwGMsg" class="sm" style="font-size:12px;color:var(--sub)" role="status"></div>
+    </div>
+
+    <div id="pwP_vault" hidden>
+      <div class="warn">⚠️ 保管するのは<b>暗号化した状態のみ</b>です(マスターパスワードで AES-256-GCM)。ただし「絶対安全」ではありません。銀行・主要メールなど<b>重要なパスワードは、専用のパスワードマネージャーやパスキー</b>を使ってください。マスターパスワードを忘れると復元できません。</div>
+      <div id="pwOff" hidden class="warn">この環境ではブラウザ保存が使えないため、保管庫は利用できません。</div>
+
+      <div id="pwSetup" hidden>
+        <p>はじめに、マスターパスワード(12文字以上・判定「安全」以上)を決めてください。</p>
+        <label class="lb" for="pwM1">マスターパスワード</label><input id="pwM1" type="password" autocomplete="off">
+        <label class="lb" for="pwM2">もう一度入力</label><input id="pwM2" type="password" autocomplete="off">
+        <div><button type="button" class="tl-b p" id="pwCreate">保管庫を作成</button></div>
+        <details><summary style="cursor:pointer;min-height:40px">📥 機種変更:メールで受け取ったデータを取り込む</summary>
+          <p class="sm" style="font-size:12px;color:var(--sub)">受け取ったメールの本文を、そのまま貼り付けてください(余分な文章があっても大丈夫です)。</p>
+          <label class="lb" for="pwXi">メール本文</label><textarea id="pwXi" rows="4" autocomplete="off" spellcheck="false" class="tl-mono"></textarea>
+          <label class="lb" for="pwXm">古い端末のマスターパスワード</label><input id="pwXm" type="password" autocomplete="off">
+          <div><button type="button" class="tl-b p" id="pwXImp">取り込む</button></div></details>
+      </div>
+
+      <div id="pwLockV" hidden>
+        <label class="lb" for="pwM3">マスターパスワード</label><input id="pwM3" type="password" autocomplete="off">
+        <div><button type="button" class="tl-b p" id="pwOpen">ロック解除</button><button type="button" class="tl-b d" id="pwWipe0">保管庫を全削除</button></div>
+      </div>
+
+      <div id="pwMain" hidden>
+        <p><b id="pwCnt">0</b> / 20 件 <span class="sm" style="font-size:12px;color:var(--sub)">(3分操作がない、または画面を1分以上離れると自動でロック)</span></p>
+        <div id="pwList"></div>
+        <p style="margin-top:12px"><b>追加</b></p>
+        <label class="lb" for="pwO">機関名</label><input id="pwO" type="text" maxlength="60" autocomplete="off">
+        <label class="lb" for="pwP">パスワード</label><input id="pwP" type="password" autocomplete="off">
+        <div><button type="button" class="tl-b p" id="pwAdd">追加して暗号化保存</button><button type="button" class="tl-b" id="pwGenIn">生成して入れる</button><button type="button" class="tl-b" id="pwLockNow">🔒 今すぐロック</button><button type="button" class="tl-b d" id="pwWipe">全削除</button></div>
+        <details><summary style="cursor:pointer;min-height:40px">📦 機種変更:メールで送る</summary>
+          <p class="sm" style="font-size:12px;color:var(--sub)">暗号化したデータをメール本文に差し込み、メール作成画面を開きます。宛先はご自身で入力(自分宛てなど)して送信してください。<b>マスターパスワードは本文に書かないでください。</b>取り込み後は、送信済み・受信メールから削除してください。</p>
+          <div><button type="button" class="tl-b p" id="pwMail">✉️ メールで送る</button><button type="button" class="tl-b" id="pwMailCopy">開かない場合:本文をコピー</button></div></details>
+      </div>
+      <div id="pwMsg" role="status" aria-live="polite" style="font-weight:700;margin-top:8px"></div>
+      <details style="margin-top:10px"><summary style="cursor:pointer;min-height:40px">ℹ️ 安全性について(正直な限界)</summary>
+        <ul class="sm" style="font-size:12.5px;margin:6px 0 0 19px;line-height:1.8">
+          <li>保存先はこのブラウザのローカルストレージで、中身は暗号文のみです。マスターパスワードと復号済みのデータは、メモリ上だけで扱い、ロックで破棄します(完全な消去までは保証できません)。</li>
+          <li>暗号化は PBKDF2-SHA256(60万回)と AES-256-GCM です。マスターパスワードが弱いと、暗号文を入手した人に総当たりされるおそれがあります。</li>
+          <li>キーボード記録などのマルウェア、悪意あるブラウザ拡張、画面の覗き見、ページ自体の改ざんは防げません。</li>
+          <li>ブラウザのデータ消去で消えます。別のブラウザ・別の端末では見えません。バックアップはありません。</li>
+          <li>機種変更のメールには暗号文が残ります。取り込み後に必ず削除してください。</li></ul></details>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   対処の手順
+   ============================================================ */
+var STEPS = [
+ { id:'s1', ti:'何が漏れたかを確かめる', mt:'まずここから。対策の範囲が決まります',
+   body:
+   '<p>企業からの通知メールや公式発表で、<b>自分の何が漏れたか</b>を確認します。' +
+   '漏れた項目によって、すべきことが変わります。</p>' +
+   '<ul>' +
+   '<li><b>氏名・住所・電話番号</b> … 迷惑電話や詐欺の連絡に注意</li>' +
+   '<li><b>メールアドレス</b> … なりすましメールに注意</li>' +
+   '<li><b>パスワード</b> … 使い回していた他のサービスも変更</li>' +
+   '<li><b>運転免許証・マイナンバーカードの画像</b> … <b>最も危険</b>。手順2へ</li>' +
+   '<li><b>クレジットカード番号</b> … カード会社へ即連絡。手順3へ</li>' +
+   '</ul>' +
+   '<div class="warn">⚠️ <b>通知を装った詐欺に注意。</b>' +
+   '「補償金を受け取るには口座情報を入力」といったメールは詐欺です。' +
+   '企業の公式サイトを自分で開いて確認してください。' +
+   '<br><a href="#secNotice" onclick="goNotice();return false">→ 機関から連絡が来たときの確認手順</a></div>' },
+
+ { id:'s2', ti:'信用情報機関に「本人申告」をする', mt:'名義の悪用を防ぐ、いちばん重要な手続き',
+   body:
+   '<p>登録すると、あなたの名義でカードやローンが申し込まれたとき、' +
+   '審査する会社が<b>慎重に確認するようになります</b>。登録は<b>5年間</b>有効です。</p>' +
+
+   '<div class="warn">⏳ <b>3機関すべてが混み合っています（2026年10月9日時点）。</b><br>' +
+   '登録まで通常より日数がかかりますが、焦る必要はありません。' +
+   '<b>出し直すと、かえって遅くなります。</b>' +
+   '申込の控えや受付番号を残して、待ってください。</div>' +
+
+   '<p><b>機関は3つあり、加盟している業種が違います。</b>' +
+   'どれか1つでは防ぎきれないため、可能なら3つとも登録してください。</p>' +
+
+   '<div class="org">' +
+     '<div class="org-c"><div class="top">' +
+       '<span class="nm">CIC</span>' +
+       '<span class="fee">1,000円</span>' +
+       '<a class="go" href="https://www.cic.co.jp/statements/" target="_blank" rel="noopener">申込ページ ↗</a>' +
+     '</div>' +
+     '<div class="ds">クレジットカード会社、携帯電話会社、信販会社が加盟。' +
+     'インターネットと郵送、どちらも1,000円です。</div>' +
+     '<div class="tgt">▶ <b>携帯の不正契約を防ぐなら、ここが要です</b></div>' +
+     '<div class="cond"><b>ネット申込には「受付番号」が必要です。</b>' +
+     'カード会社などに届け出てCICに登録されている電話番号から、' +
+     'ナビダイヤル（0570-021-717）にかけて取得します。有効時間は1時間です。<br>' +
+     'この電話番号から発信できない方、住所や氏名を変更された方は<b>郵送</b>をお使いください。' +
+     '郵送は手数料1,000円ぶんの<b>定額小為替</b>（郵便局で購入）を同封します。</div></div>' +
+
+     '<div class="org-c"><div class="top">' +
+       '<span class="nm">JICC</span>' +
+       '<span class="fee">700円<small>〜</small></span>' +
+       '<a class="go" href="https://www.jicc.co.jp/comment" target="_blank" rel="noopener">申込ページ ↗</a>' +
+     '</div>' +
+     '<div class="ds">消費者金融、信販会社が加盟。' +
+     '<b>スマホアプリなら700円</b>、郵送は1,111円です。' +
+     'アプリの場合、登録まで即日から2日程度（平日）が目安です。</div>' +
+     '<div class="tgt">▶ 現物が手元にある場合は「<b>名義の悪用防止</b>」を選択</div>' +
+     '<div class="cond"><b>完了通知が届かないことがあります。</b>' +
+     'アプリのトップにある「申込状況と登録結果の確認」で、' +
+     'ステータスが「コメント登録完了」になっていれば済んでいます。' +
+     'メールが来ないからといって、申し込み直さないでください。<br>' +
+     '郵送の場合は、コンビニのマルチコピー機かLoppiで' +
+     '「本人申告利用券」（商品番号 0267189）を購入します。定額小為替は使えません。</div></div>' +
+
+     '<div class="org-c"><div class="top">' +
+       '<span class="nm">全国銀行個人信用情報センター</span>' +
+       '<span class="fee">500円</span>' +
+       '<a class="go" href="https://www.zenginkyo.or.jp/pcic/return/" target="_blank" rel="noopener">申込ページ ↗</a>' +
+     '</div>' +
+     '<div class="ds">銀行、信用金庫が加盟。3機関のうち、もっとも安く済みます。</div>' +
+     '<div class="tgt">▶ 銀行ローンの不正契約を防ぎます</div>' +
+     '<div class="cond"><b>ネット申込にはマイナンバーカードが必要です。</b>' +
+     'NFC対応のスマートフォンと専用アプリで本人確認をします。' +
+     'お持ちでない場合は<b>郵送</b>をお使いください。<br>' +
+     '窓口での受付は行っていません。問い合わせは 0120-540-558 です。</div></div>' +
+   '</div>' +
+
+   '<p><b>申込方法ごとの手数料</b></p>' +
+   '<table class="fee-t">' +
+     '<tr><th>機関</th><th>申込方法</th><th style="text-align:right">手数料</th></tr>' +
+     '<tr><td>CIC</td><td>インターネット</td><td class="y">1,000円</td></tr>' +
+     '<tr><td>CIC</td><td>郵送（定額小為替）</td><td class="y">1,000円</td></tr>' +
+     '<tr><td>JICC</td><td>スマホアプリ</td><td class="y">700円</td></tr>' +
+     '<tr><td>JICC</td><td>郵送（コンビニで利用券）</td><td class="y">1,111円</td></tr>' +
+     '<tr><td>全銀協</td><td>インターネット（マイナカード）</td><td class="y">500円</td></tr>' +
+   '</table>' +
+   '<p class="sm" style="font-size:12px;color:var(--sub)">' +
+   '※ 全銀協は郵送も受け付けています。郵送の金額は公式ページでご確認ください。</p>' +
+
+   '<div class="warn">💡 <b>いちばん安い組み合わせで、3機関あわせて2,200円。</b>' +
+   '（CICネット1,000円＋JICCアプリ700円＋全銀協ネット500円）<br>' +
+   '高く感じるかもしれませんが、不正契約が1件でも成立すると、' +
+   '取り消しの手続きに何か月もかかります。' +
+   'かかった費用は<b>損害として請求できる可能性</b>があるので、領収書は残してください（手順7）。</div>' +
+
+   '<p class="note" style="margin:0;font-size:12px">' +
+   '※ 大規模な漏洩では、企業が費用を負担する補償策を出すことがあります。' +
+   '通知の内容を確認してから申し込むと、自己負担を避けられる場合があります。</p>' },
+
+
+ { id:'s2b', ti:'身分証そのものへの対応', mt:'免許証・マイナンバーカードが流出したとき',
+   body:
+   '<p>どちらが流出したかで、やることが変わります。</p>' +
+
+   '<div class="doc-tab">' +
+     '<button type="button" class="on" onclick="docTab(\'lic\',this)">🚗 運転免許証</button>' +
+     '<button type="button" onclick="docTab(\'myn\',this)">🪪 マイナンバーカード</button>' +
+   '</div>' +
+
+   /* ---- 運転免許証 ---- */
+   '<div class="doc-p on" id="docLic">' +
+     '<p><b>手元にカードがある（画像だけ流出した）場合</b>、' +
+     '急いで再発行する必要はありません。まず手順2の本人申告を済ませてください。</p>' +
+
+     '<div class="warn">💡 <b>再発行すると、番号の末尾1桁（再交付回数）が変わります。</b><br>' +
+     '番号そのものは変わりませんが、<b>流出した画像と現在の免許証が一致しなくなる</b>ため、' +
+     '窓口で照合されたときに不正を見つけやすくなります。</div>' +
+
+     '<table class="fee-t">' +
+       '<tr><th>いまの持ち方</th><th>再交付後</th><th style="text-align:right">手数料</th></tr>' +
+       '<tr><td>免許証のみ</td><td>免許証のみ</td><td class="y">2,600円</td></tr>' +
+       '<tr><td>免許証のみ</td><td>マイナ免許証のみ</td><td class="y">1,500円</td></tr>' +
+       '<tr><td>2枚持ち（免許証だけ紛失）</td><td>マイナ免許証のみ</td><td class="y free">0円</td></tr>' +
+       '<tr><td>2枚持ち（マイナだけ紛失）</td><td>免許証のみ</td><td class="y free">0円</td></tr>' +
+     '</table>' +
+
+     '<p><b>手続きの場所</b><br>' +
+     '運転免許センター、運転免許試験場、一部の警察署。' +
+     '即日交付かどうかは地域で異なります。</p>' +
+
+     '<p><b>持ち物</b></p>' +
+     '<ul>' +
+       '<li>証明写真1枚（縦3cm×横2.4cm、6か月以内）</li>' +
+       '<li>本人確認書類</li>' +
+       '<li>手元にある免許証（紛失していない場合）</li>' +
+     '</ul>' +
+
+     '<div class="warn">📅 <b>更新時期が近いなら、更新と同時に。</b>' +
+     '再交付手数料が不要になり、更新手数料だけで済みます。</div>' +
+   '</div>' +
+
+   /* ---- マイナンバーカード ---- */
+   '<div class="doc-p" id="docMyn">' +
+     '<div class="urg-call">' +
+       '<div class="ti">⚠️ カードが手元にない場合は、すぐ電話を</div>' +
+       '<a class="tel" href="tel:0120950178">0120-95-0178</a>' +
+       '<div class="sub2">マイナンバー総合フリーダイヤル（24時間365日・通話無料）<br>' +
+       '音声ガイダンス<b>2番</b>で、電子証明書の機能を<b>一時停止</b>できます。</div>' +
+     '</div>' +
+
+     '<p><b>画像だけが流出し、カードは手元にある場合</b>は、一時停止までは不要です。' +
+     'ただし次の点にご注意ください。</p>' +
+
+     '<div class="warn">🔑 <b>マイナンバー（12桁）は、原則として変わりません。</b><br>' +
+     '再発行してもカードが新しくなるだけです。' +
+     '番号を変更できるのは、<b>不正に使われるおそれがあると市区町村が認めた場合</b>に限られます。' +
+     '実害が出ている、または強く懸念される場合は、窓口にご相談ください。</div>' +
+
+     '<table class="fee-t">' +
+       '<tr><th>区分</th><th>内容</th><th style="text-align:right">手数料</th></tr>' +
+       '<tr><td>通常の再交付</td><td>電子証明書あり</td><td class="y">1,000円</td></tr>' +
+       '<tr><td>通常の再交付</td><td>電子証明書なし</td><td class="y">800円</td></tr>' +
+       '<tr><td>特急発行</td><td>短期間で受け取る</td><td class="y">2,000円</td></tr>' +
+       '<tr><td>盗難の場合</td><td>被害届の証明があるとき</td><td class="y free">0円</td></tr>' +
+     '</table>' +
+
+     '<p class="sm" style="font-size:12px">※ 盗難届や罹災証明が確認できる場合は無料になります。' +
+     '取り扱いは自治体により異なるため、窓口でご確認ください。</p>' +
+
+     '<p><b>手続きの流れ</b></p>' +
+     '<ul>' +
+       '<li>① カードが手元にない → <b>0120-95-0178</b> で一時停止</li>' +
+       '<li>② 警察署・交番へ<b>遺失届</b>（受理番号を控える）</li>' +
+       '<li>③ 住民票のある市区町村の窓口で再交付を申請</li>' +
+       '<li>④ 受け取りまで<b>1〜2か月</b>（特急発行なら短縮）</li>' +
+     '</ul>' +
+
+     '<div class="warn">💡 <b>見つかった場合は、窓口で無料で解除</b>できます。' +
+     '電話やコンビニでは解除できません。</div>' +
+
+     '<p><b>マイナ保険証をお使いの場合</b><br>' +
+     '一時停止すると、医療機関で保険証として使えなくなります。' +
+     '受診の予定がある方は、資格確認書の発行を窓口で相談してください。</p>' +
+   '</div>' +
+
+   '<div class="cm-note" style="margin-top:14px">' +
+     '<b>どちらの場合も、最優先は手順2の本人申告です。</b><br>' +
+     'カードを作り直しても、流出した情報は取り戻せません。' +
+     '名義を使われないようにする手続きを、先に済ませてください。' +
+   '</div>' },
+ { id:'s3', ti:'カードと口座を確認する', mt:'いま最も早く効きます。本人申告を待っている間に',
+   body:
+   '<p>クレジットカード情報が含まれていた場合は、<b>すぐにカード会社へ連絡</b>してください。' +
+   '含まれていなくても、念のため確認を。</p>' +
+   '<ul>' +
+   '<li>直近3か月の<b>利用明細</b>を見る（少額の試し利用が狙われます）</li>' +
+   '<li>銀行口座の<b>入出金</b>を確認する</li>' +
+   '<li><b>ログイン通知</b>をオンにする</li>' +
+   '<li><b>送金の上限額</b>を下げておく</li>' +
+   '</ul>' +
+   '<div class="warn">⚡ <b>いちばん早く効くのは、通知をオンにすることです。</b><br>' +
+   'カード会社と銀行のアプリで、利用通知（プッシュ通知・メール）を' +
+   '<b>金額にかかわらず全件</b>受け取る設定にしてください。今日すぐできます。<br>' +
+   '本人申告は「審査する会社に気づかせる」間接的な仕組みですが、' +
+   'こちらは<b>自分が直接見張る</b>仕組みです。登録を待っている間、これが実質的な守りになります。</div>' +
+   '<div class="warn">⚠️ <b>不正利用は、まず数百円の少額から試されます。</b>' +
+   '「こんな小さい額なら」と見逃さないでください。</div>' },
+
+ { id:'s4', ti:'パスワードを変える', mt:'使い回していた他のサービスも',
+   body:
+   '<p>漏れたサービスだけでなく、<b>同じパスワードを使っていたすべてのサービス</b>を変更します。</p>' +
+   '<p><b>優先する順番</b></p>' +
+   '<ul>' +
+   '<li>① <b>メール</b> … ここを取られると、他のパスワードも再設定されます</li>' +
+   '<li>② <b>金融機関・決済サービス</b></li>' +
+   '<li>③ ネット通販（カード情報を登録しているもの）</li>' +
+   '<li>④ SNS</li>' +
+   '</ul>' +
+   '<p><b>あわせて二段階認証を</b>。パスワードが漏れても、これがあれば止められます。' +
+   '最低でもメールと金融機関には設定してください。</p>' },
+
+ { id:'s5', ti:'自治体の「本人通知制度」に登録する', mt:'無料。住民票の不正取得を知らせてくれます',
+   body:
+   '<p>住民票や戸籍謄本が第三者に交付されたとき、<b>あなたに通知が届く</b>制度です。</p>' +
+   '<p><b>手数料は無料</b>。多くの自治体が実施しています。</p>' +
+   '<p>なりすましで住民票を取られると、そこを足がかりに他の手続きをされるおそれがあります。' +
+   '早く気づけることに意味があります。</p>' +
+   '<div class="warn">📍 <b>お住まいの市区町村の窓口</b>、または自治体サイトで' +
+   '「本人通知制度」と検索してください。名称は自治体により異なります。</div>' },
+
+ { id:'s6', ti:'記録を残す', mt:'あとで必要になります',
+   body:
+   '<p>賠償請求や相談をするとき、<b>記録が証拠になります</b>。</p>' +
+   '<ul>' +
+   '<li>企業から届いた<b>通知メール</b>（削除しない）</li>' +
+   '<li>公式発表の<b>画面を保存</b>（日付が分かる形で）</li>' +
+   '<li>本人申告の<b>登録完了通知</b></li>' +
+   '<li>手数料の<b>領収書</b></li>' +
+   '<li>不審な連絡があった<b>日時と内容</b></li>' +
+   '</ul>' +
+   '<div class="warn">💡 <b>かかった費用は、損害として請求できる可能性があります。</b>' +
+   '領収書は必ず残してください。</div>' },
+
+ { id:'s7', ti:'数か月後に、もう一度確かめる', mt:'開示請求は、いま急がなくてよい手続きです',
+   body:
+   '<p>信用情報の<b>開示請求</b>は、自分の名義で勝手に契約されていないかを確かめる手続きです。' +
+   'ただし<b>いま急いでも、得られるものが少ない</b>ので、落ち着いてからにしてください。</p>' +
+   '<p>理由は2つあります。</p>' +
+   '<ul>' +
+   '<li>名義を悪用されても、<b>信用情報に記録が載るまでには時間がかかります。</b>' +
+   'いま開示しても、まだ何も出てきません</li>' +
+   '<li>開示請求も同じように混み合っており、<b>開示書の発送が遅れています</b>' +
+   '（JICCが2026年10月8日に告知）。いま並ぶと、手順2の登録まで一緒に遅れます</li>' +
+   '</ul>' +
+   '<div class="warn">📅 <b>目安は、3か月後と1年後。</b>' +
+   'そのころには、もし悪用されていれば記録に現れているはずです。<br>' +
+   '手順2の本人申告だけ先に列に並べておいて、<b>開示は後回しにする</b>。' +
+   'これがいちばん合理的な順番です。</div>' +
+   '<p><b>開示されたら、ここを見ます</b></p>' +
+   '<ul>' +
+   '<li>身に覚えのない<b>契約・申込の記録</b>がないか</li>' +
+   '<li>申し込んでいない会社からの<b>照会履歴</b>がないか' +
+   '（＝あなたの名義で審査された記録です）</li>' +
+   '</ul>' +
+   '<p>見つかったら、その会社と、カード会社、そして警察（<b>#9110</b>）に連絡してください。' +
+   '手順6で残した記録が、ここで効いてきます。</p>' +
+   '<div class="cm-note">開示にも手数料がかかります。金額と申込方法は、' +
+   '手順2と同じ各機関の公式ページでご確認ください。</div>' }
+];
+
+/* 公的機関のリンク */
+var LINKS = [
+ { ic:'🏛', nm:'個人情報保護委員会', ds:'漏えい事案の公表、相談窓口（03-6457-9849）',
+   u:'https://www.ppc.go.jp/' },
+ { ic:'🛡', nm:'IPA 情報処理推進機構', ds:'セキュリティの注意喚起、10大脅威',
+   u:'https://www.ipa.go.jp/security/' },
+ { ic:'👮', nm:'警察庁 サイバー警察局', ds:'サイバー犯罪の統計と注意喚起',
+   u:'https://www.npa.go.jp/bureau/cyber/index.html' },
+ { ic:'📡', nm:'NISC 内閣サイバーセキュリティセンター', ds:'政府の注意喚起',
+   u:'https://www.nisc.go.jp/' },
+ { ic:'🔔', nm:'JPCERT/CC', ds:'脆弱性と攻撃の最新情報',
+   u:'https://www.jpcert.or.jp/' }
+];
+
+/* 相談先 */
+var CONSULT = [
+ { ic:'📞', nm:'個人情報保護委員会 相談ダイヤル', ds:'03-6457-9849（平日 9:30〜17:30）',
+   u:'https://www.ppc.go.jp/aboutus/contactus/' },
+ { ic:'🛒', nm:'消費者ホットライン 188', ds:'契約トラブル全般。局番なしで188',
+   u:'https://www.kokusen.go.jp/map/' },
+ { ic:'👮', nm:'警察相談専用窓口 #9110', ds:'犯罪被害のおそれがあるとき',
+   u:'https://www.npa.go.jp/bureau/safetylife/soudan.html' },
+ { ic:'⚖️', nm:'法テラス', ds:'0570-078374。収入条件を満たせば無料相談',
+   u:'https://www.houterasu.or.jp/' },
+ { ic:'💳', nm:'日本クレジット協会', ds:'カードの不正利用に関する相談',
+   u:'https://www.j-credit.or.jp/' }
+];
+
+/* ============================================================
+   組み立て
+   ============================================================ */
+var KEY = 'leak-done';
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function getDone(){
+  try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){ return {}; }
+}
+function setDone(o){
+  try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){}
+}
+
+function drawSteps(){
+  var done = getDone();
+  var h = '';
+  for(var i=0;i<STEPS.length;i++){
+    var s = STEPS[i], on = !!done[s.id];
+    h += '<div class="step' + (on ? ' done' : '') + '" id="' + s.id + '">' +
+      '<button type="button" class="step-h" onclick="toggleStep(\'' + s.id + '\')">' +
+        '<span class="no">' + (on ? '✓' : (i+1)) + '</span>' +
+        '<span class="bd"><span class="ti">' + esc(s.ti) + '</span>' +
+        '<span class="mt">' + esc(s.mt) + '</span></span>' +
+        '<span class="ar">▶</span>' +
+      '</button>' +
+      '<div class="step-b">' + s.body +
+        '<label class="chk"><input type="checkbox"' + (on ? ' checked' : '') +
+        ' onchange="mark(\'' + s.id + '\', this.checked)">' +
+        '<span>この手順を終えました</span></label>' +
+      '</div></div>';
+  }
+  document.getElementById('steps').innerHTML = h;
+  updProg();
+}
+
+function toggleStep(id){
+  var el = document.getElementById(id);
+  if(el) el.classList.toggle('open');
+}
+
+function mark(id, on){
+  var d = getDone();
+  if(on) d[id] = 1; else delete d[id];
+  setDone(d);
+  var el = document.getElementById(id);
+  if(el){
+    el.classList.toggle('done', on);
+    var no = el.querySelector('.no');
+    var idx = STEPS.map(function(s){ return s.id; }).indexOf(id);
+    if(no) no.textContent = on ? '✓' : (idx + 1);
+  }
+  updProg();
+  if(on) toast('ひとつ進みました');
+}
+
+function updProg(){
+  var d = getDone(), n = 0;
+  for(var i=0;i<STEPS.length;i++) if(d[STEPS[i].id]) n++;
+  var pb = document.getElementById('pb');
+  var pn = document.getElementById('pn');
+  if(pb) pb.style.width = (n / STEPS.length * 100) + '%';
+  if(pn) pn.textContent = (n === STEPS.length) ? 'すべて完了' : (n + ' / ' + STEPS.length);
+}
+
+function resetAll(){
+  if(!confirm('チェックをすべて消します。よろしいですか。')) return;
+  setDone({});
+  drawSteps();
+  toast('チェックを消しました');
+}
+
+function drawLinks(id, arr){
+  var h = '';
+  for(var i=0;i<arr.length;i++){
+    var l = arr[i];
+    h += '<a href="' + esc(l.u) + '" target="_blank" rel="noopener">' +
+      '<span class="ic">' + l.ic + '</span>' +
+      '<span class="tx"><b>' + esc(l.nm) + '</b><small>' + esc(l.ds) + '</small></span>' +
+      '<span class="gt">↗</span></a>';
+  }
+  document.getElementById(id).innerHTML = h;
+}
+
+/* ---- 共有 ---- */
+function toast(m){
+  var t = document.getElementById('toast');
+  t.textContent = m; t.classList.add('show');
+  clearTimeout(t._tm); t._tm = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+function share(){
+  var url = location.href.split('#')[0];
+  var text = '個人情報が漏れたら｜いま何をすべきか 対処ガイド\n';
+  if(navigator.share){
+    navigator.share({ title:'個人情報が漏れたら', text:text, url:url }).catch(function(){});
+    return;
+  }
+  copy(text + url, '共有メッセージをコピーしました');
+}
+function copyLink(){ copy(location.href.split('#')[0], 'リンクをコピーしました'); }
+function copy(text, done){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ toast(done); })
+      .catch(function(){ fb(text, done); });
+  }else fb(text, done);
+}
+function fb(text, done){
+  try{
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    toast(done);
+  }catch(e){ prompt('コピーしてください', text); }
+}
+
+
+/* ============================================================
+   表示の設定・メニュー・共有
+   ============================================================ */
+var TK = 'leak-theme', ZK = 'leak-size';
+var ZS = { s:0.9, m:1, l:1.18 };
+
+function getTheme(){ try{ return localStorage.getItem(TK) || 'light'; }catch(e){ return 'light'; } }
+function getSize(){ try{ return localStorage.getItem(ZK) || 'm'; }catch(e){ return 'm'; } }
+function save(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+function applyTheme(v){
+  document.documentElement.classList.toggle('dk', v === 'dark');
+  var b = document.getElementById('tbTheme');
+  if(b){
+    b.querySelector('.ic').textContent = (v === 'dark') ? '☀️' : '🌙';
+    var tx = b.querySelector('.tx');
+    if(tx) tx.textContent = (v === 'dark') ? '明るく' : '暗く';
+  }
+}
+function doTheme(){
+  var n = (getTheme() === 'dark') ? 'light' : 'dark';
+  save(TK, n); applyTheme(n);
+}
+
+function applySize(v){
+  document.documentElement.style.setProperty('--z', ZS[v] || 1);
+  var a = document.getElementById('zoomArea');
+  if(a) a.classList.add('zoomed');
+  var bs = document.querySelectorAll('.tb-sz button');
+  for(var i=0;i<bs.length;i++) bs[i].classList.toggle('on', bs[i].getAttribute('data-z') === v);
+}
+function doSize(v){ save(ZK, v); applySize(v); }
+
+/* ---- メニュー ---- */
+function openMenu(){
+  document.getElementById('mnu').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu(){
+  document.getElementById('mnu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openDlg(id){
+  closeMenu();
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDlg(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ---- 共有 ---- */
+function doShare(){
+  var url = location.href.split('#')[0];
+  var text = '個人情報が漏れたら｜いま何をすべきか 対処ガイド\n' +
+             '信用情報機関への本人申告など、8つの手順をまとめています。\n';
+  if(navigator.share){
+    navigator.share({ title:'個人情報が漏れたら', text:text, url:url }).catch(function(){});
+    return;
+  }
+  copy(text + url, '共有メッセージをコピーしました');
+}
+function doCopyUrl(){ copy(location.href.split('#')[0], 'リンクをコピーしました'); }
+
+/* 手順の要点を、文章としてコピーする */
+function doCopyText(){
+  var t = '【個人情報が漏れたら｜対処ガイド】\n\n';
+  for(var i=0;i<STEPS.length;i++){
+    t += (i+1) + '. ' + STEPS[i].ti + '\n   ' + STEPS[i].mt + '\n';
+  }
+  t += '\n■ 信用情報機関への本人申告（名義の悪用を防ぐ）\n';
+  t += '  CIC    1,000円  カード・携帯（ネット/郵送）\n';
+  t += '  JICC     700円  消費者金融・信販（アプリ。郵送は1,111円）\n';
+  t += '  全銀協   500円  銀行（ネット。マイナカード必須）\n';
+  t += '  ※3つとも登録すると、より確実です。登録は5年間有効\n\n';
+  t += '■ いま3機関とも受付が混み合っています（2026年10月9日時点）\n';
+  t += '  ・申込済みなら、出し直さないこと\n';
+  t += '  ・JICCは完了通知が届かない場合あり。アプリの\n';
+  t += '    「申込状況と登録結果の確認」でステータスを見る\n';
+  t += '  ・待っている間に、カードと銀行の利用通知をオンに\n\n';
+  t += '■ 機関から連絡が来たら（金融機関・省庁・警察）\n';
+  t += '  ・メール/SMS/書面のリンク・電話番号・QR・添付は使わない\n';
+  t += '  ・自分で調べた公式窓口（カード裏面・公式サイト）で確認する\n';
+  t += '  ・暗証番号・認証コードを聞く、ATMへ誘導、急かす → 詐欺\n';
+  t += '  ・相談: 警察 #9110 / 消費者ホットライン 188\n\n';
+  t += '■ 情報漏洩企業一覧2026 世界版（メニューから開けます）\n';
+  t += '■ 被害防止ツール（これからの備え）\n';
+  t += '  1. 使っているサービスの照合  2. 怪しい連絡チェック  3. 家族の合言葉\n\n';
+  t += '詳しくは → ' + location.href.split('#')[0] + '\n';
+  t += 'DWA防災情報センター';
+  copy(t, '内容をコピーしました');
+}
+
+/* ---- 画面ができる前に設定を当てる（ちらつき防止） ---- */
+(function(){
+  var h = document.documentElement;
+  if(getTheme() === 'dark') h.classList.add('dk');
+  h.style.setProperty('--z', ZS[getSize()] || 1);
+})();
+
+document.addEventListener('keydown', function(e){
+  if(e.key !== 'Escape') return;
+  closeMenu(); closeDlg('dlgPriv'); closeDlg('dlgCredit');
+});
+
+
+
+/* 身分証の種類を切り替える */
+function docTab(k, btn){
+  var l = document.getElementById('docLic');
+  var m = document.getElementById('docMyn');
+  if(l) l.classList.toggle('on', k === 'lic');
+  if(m) m.classList.toggle('on', k === 'myn');
+  var bs = document.querySelectorAll('.doc-tab button');
+  for(var i=0;i<bs.length;i++) bs[i].classList.remove('on');
+  if(btn) btn.classList.add('on');
+}
+
+/* ============================================================
+   サイバー脅威マップの9項目
+   Kaspersky社の公表内容にもとづく
+   ============================================================ */
+var CMAP = [
+ { cd:'OAS', col:'#2eb872', en:'On-Access Scan', ja:'リアルタイム検知',
+   ds:'ファイルを開く・コピーする・実行する・保存する、そのときに見つかったものです。常に動いている監視なので、通常いちばん件数が多くなります。',
+   ex:'<b>こんなとき：</b>ダウンロードしたファイルを開こうとしたら止められた' },
+
+ { cd:'ODS', col:'#e0455a', en:'On-Demand Scan', ja:'手動スキャン検知',
+   ds:'利用者が自分で「ウイルススキャン」を実行したときに見つかったものです。すでに保存されていた、気づかれていなかったものが多く含まれます。',
+   ex:'<b>こんなとき：</b>久しぶりに全体をスキャンしたら、古いファイルから見つかった' },
+
+ { cd:'MAV', col:'#e08a2e', en:'Mail Anti-Virus', ja:'メール経由の検知',
+   ds:'メールソフトに新しいメールが届いたときの検査で見つかったものです。添付ファイルを保存するときは、あらためてOASが働きます。',
+   ex:'<b>こんなとき：</b>請求書を装った添付ファイルが、開く前に遮断された' },
+
+ { cd:'WAV', col:'#2c8fe0', en:'Web Anti-Virus', ja:'Web閲覧中の検知',
+   ds:'サイトを開いたとき、またはファイルをダウンロードしたときに見つかったものです。改ざんされたページや、偽サイトが含まれます。',
+   ex:'<b>こんなとき：</b>検索から入ったサイトで、警告が出て接続が止まった' },
+
+ { cd:'IDS', col:'#d14fd1', en:'Intrusion Detection System', ja:'ネットワーク侵入検知',
+   ds:'ネットワークを通じた攻撃を見つけたものです。ファイルではなく、通信そのものが対象になります。ルーターや公開サーバーが狙われます。',
+   ex:'<b>こんなとき：</b>外部から、管理画面へのログインが何度も試された' },
+
+ { cd:'VUL', col:'#e8c93a', en:'Vulnerability Scan', ja:'脆弱性の発見',
+   ds:'ソフトや設定の弱点が見つかったものです。攻撃を受けたわけではなく、<b>「ここが狙われやすい」という警告</b>です。更新をしていない機器で多く出ます。',
+   ex:'<b>こんなとき：</b>古いままのソフトに、既知の弱点が残っていた' },
+
+ { cd:'KAS', col:'#8f6ae0', en:'Kaspersky Anti-Spam', ja:'迷惑メールの検知',
+   ds:'評判情報をもとに、不審なメールや迷惑メールの通信を見つけたものです。詐欺メールの大量配信が始まると、数字が跳ね上がります。',
+   ex:'<b>こんなとき：</b>同じ文面のメールが、世界中に一斉に送られている' },
+
+ { cd:'BAD', col:'#3ab8c4', en:'Botnet Activity Detection', ja:'ボットネットの活動',
+   ds:'乗っ取られた機器が、指令サーバーと通信しているのを見つけたものです。DDoS攻撃の被害者側と、命令を出す側のIPアドレスが対象です。',
+   ex:'<b>こんなとき：</b>家庭のカメラが乗っ取られ、攻撃に使われていた' },
+
+ { cd:'RMW', col:'#4f7fd1', en:'Ransomware', ja:'身代金要求型ウイルス',
+   ds:'ファイルを暗号化して金銭を要求する攻撃を見つけたものです。<b>件数は少なくても、1件あたりの被害が最も大きい</b>種類です。',
+   ex:'<b>こんなとき：</b>社内のファイルがすべて開けなくなり、金銭を要求された' }
+];
+
+function drawCmap(){
+  var box = document.getElementById('cmList');
+  if(!box) return;
+  var h = '';
+  for(var i=0;i<CMAP.length;i++){
+    var c = CMAP[i];
+    h += '<div class="cm-i">' +
+      '<div class="hd">' +
+        '<span class="cd" style="background:' + c.col + '">' + c.cd + '</span>' +
+        '<span class="bd"><span class="en">' + c.en + '</span>' +
+        '<span class="ja">' + c.ja + '</span></span>' +
+      '</div>' +
+      '<div class="ds">' + c.ds + '</div>' +
+      '<div class="ex">' + c.ex + '</div>' +
+      '</div>';
+  }
+  box.innerHTML = h;
+}
+
+
+/* ============================================================
+   機関から連絡が来たとき（確認手順と対処）
+   ============================================================ */
+var NOTICES = [
+ { id:'n1', ic:'🛑', ti:'まず守る3つの鉄則', mt:'メール・電話・書面、どの機関でも共通です',
+   body:
+   "<p><b>① 相手の連絡手段を使わない。</b>" +
+   "メール・SMS・書面にある<b>リンク、電話番号、QRコード、添付ファイル</b>は使いません。" +
+   "電話の着信番号も、偽装されることがあります。</p>" +
+   "<p><b>② 自分で調べた窓口に連絡する。</b>" +
+   "公式サイトをブックマークや検索から<b>自分で開く</b>、" +
+   "<b>カードの裏面・通帳・取引明細書</b>にある番号にかける、公式アプリやマイページのお知らせを見る、のいずれかです。</p>" +
+   "<p><b>③ その場で決めない。</b>" +
+   "家族や、警察相談専用電話 <span class='tel'>#9110</span>、消費者ホットライン <span class='tel'>188</span> に相談してからにします。</p>" +
+   "<div class='warn'>🚩 <b>次のどれかに当てはまれば、ほぼ詐欺です。</b><ul style='margin-top:6px'>" +
+   "<li>暗証番号、パスワード、ワンタイムパスワード（認証コード）、口座・カード情報を聞かれる、入力させられる</li>" +
+   "<li>「至急」「本日中」「口座凍結」「法的措置」「逮捕」など、期限や脅しで急かす</li>" +
+   "<li>キャッシュカード・通帳・印鑑を「預かる」「交換する」「送って」と言われる</li>" +
+   "<li><b>ATMへ行くよう指示される</b>（還付金や給付金は、ATMでは受け取れません）</li>" +
+   "<li>電子マネー、ギフトカード、暗号資産での支払いを求められる</li>" +
+   "<li>LINEなど別のアプリへ誘導される、ビデオ通話を求められる</li>" +
+   "<li>「誰にも話さないで」と秘密を求められる</li></ul></div>" },
+
+ { id:'n2', ic:'📧', ti:'メール・SMSが届いたとき', mt:'6つの確認手順',
+   body:
+   "<ol>" +
+   "<li><b>開かない・押さない・返信しない。</b>リンクも添付ファイルも、そのままにします。</li>" +
+   "<li><b>差出人を見る。</b>表示される名前は偽装できます。メールアドレスの<b>ドメイン</b>（@より後ろ）を確かめます。" +
+   "国の機関は <b>go.jp</b>、自治体は <b>lg.jp</b> や市区町村名のドメインが多いです。" +
+   "ただし、よく似たドメインで偽装されることもあるため、<b>ドメインだけで安全とは決めません。</b></li>" +
+   "<li><b>文面の違和感を探す。</b>「お客様」とだけ書かれた宛名、不自然な日本語、金額や期限の強調、個人情報の入力要求などです。</li>" +
+   "<li><b>公式サイトで照合する。</b>メールのリンクではなく、自分で開いた公式サイトや公式アプリに、<b>同じお知らせが出ているか</b>を見ます。</li>" +
+   "<li><b>それでも不安なら電話で確認する。</b>番号は、公式サイトやカード裏面で自分で調べたものを使います。</li>" +
+   "<li><b>偽物だったら、証拠を残して報告する。</b>削除する前に、画面のスクリーンショットを保存します。" +
+   "金融機関や、フィッシング対策協議会、警察に連絡します。SMSは、契約している携帯会社の迷惑SMS報告窓口（多くは「7726」宛への転送）に報告できます。</li>" +
+   "</ol>" +
+   "<div class='warn'>⚠️ <b>返信や「配信停止」のリンクも押さないでください。</b>" +
+   "押すと、そのアドレスが使われていると相手に知らせることになります。</div>" },
+
+ { id:'n3', ic:'📮', ti:'電話・書面（郵便・FAX）が届いたとき', mt:'一度切る。書面の連絡先にはかけない',
+   body:
+   "<p><b>■ 電話</b></p>" +
+   "<ul>" +
+   "<li><b>いったん切って</b>、自分で調べた番号にかけ直します。「警察です」「銀行協会です」「総務省です」と名乗られても同じです。</li>" +
+   "<li>警察署や銀行の番号が画面に表示されても、<b>表示は偽装できます</b>。</li>" +
+   "<li>自動音声で「1を押してください」と言われたら、押さずに切ります。</li>" +
+   "<li>警察が、電話で暗証番号を聞いたり、捜査の名目で送金を求めたりすることは<b>ありません</b>。</li>" +
+   "</ul>" +
+   "<p><b>■ 書面（封書・ハガキ・FAX）</b></p>" +
+   "<ul>" +
+   "<li>差出人の名前、住所、押印、ロゴは<b>偽装できます</b>。書面に書かれた<b>電話番号やQRコードは使いません</b>。</li>" +
+   "<li><b>取引のない金融機関</b>からの書面は、無視して構いません。取引がある場合は、マイページや公式窓口で照会します。</li>" +
+   "<li>裁判所の正式な書類（訴状など）は、通常<b>「特別送達」</b>という郵便で、配達員から手渡しで受け取ります。" +
+   "ハガキや普通郵便の「訴訟最終通知」「法務省管轄」「民事訴訟告知」などの文面は、<b>架空請求の典型</b>です。</li>" +
+   "<li>書面は<b>封筒ごと保管</b>します。消印や差出人の記載が、相談時の手がかりになります。</li>" +
+   "</ul>" },
+
+ { id:'n4', ic:'🏛', ti:'機関別：本物のやり方と、偽物の典型', mt:'金融機関・警察・税務・自治体・裁判所など',
+   body:
+   "<p class='sm' style='font-size:12px;color:var(--sub)'>表は横にスクロールできます。</p>" +
+   "<div class='ntc-sc'><table class='fee-t ntc-t'>" +
+   "<tr><th>機関</th><th>本物は通常</th><th>偽物の典型</th><th>確認先</th></tr>" +
+   "<tr><td>銀行・カード会社・証券</td><td>電話やメールで、暗証番号・ワンタイムパスワードを聞かない。キャッシュカードを預からない</td>" +
+   "<td>「不正利用を検知」「口座を凍結」のメール＋偽のログイン画面。「カードを交換する」と自宅を訪問</td>" +
+   "<td>カード裏面・通帳の番号、公式アプリ</td></tr>" +
+   "<tr><td>警察</td><td>電話・SNS・メールで、逮捕状の提示や、捜査協力名目の送金・LINE追加・ビデオ通話での取り調べをしない</td>" +
+   "<td>「あなたの口座が犯罪に使われた」と言い、資産の調査や送金を求める</td>" +
+   "<td><span class='tel'>#9110</span>、最寄りの警察署（番号は自分で調べる）</td></tr>" +
+   "<tr><td>国税庁・自治体・年金・健康保険</td><td>還付金・給付金のために、ATMの操作を指示しない</td>" +
+   "<td>「還付金があります」とATMへ誘導。メールのURLから個人情報を入力させる</td>" +
+   "<td>各機関の公式サイト、窓口、<span class='tel'>188</span></td></tr>" +
+   "<tr><td>省庁（総務省・デジタル庁・厚労省など）</td><td>正式な案内は、公式サイトや書面で行う</td>" +
+   "<td>マイナンバー、ポイント、保険証の手続きを名目に、URLから入力させる</td>" +
+   "<td>各省庁の公式サイトの注意喚起ページ</td></tr>" +
+   "<tr><td>裁判所・法務省・弁護士</td><td>訴状などは「特別送達」で手渡し。メールやSMSでの突然の最終通告はしない</td>" +
+   "<td>ハガキ・メール・SMSで「訴訟最終通知」。連絡先の電話番号へかけさせる</td>" +
+   "<td><span class='tel'>188</span>、法テラス</td></tr>" +
+   "<tr><td>漏洩を起こした企業</td><td>補償や返金のために、口座番号・カード番号・暗証番号を聞かない</td>" +
+   "<td>「補償金の受取に口座情報を入力」と案内</td>" +
+   "<td>企業の公式サイトの「お知らせ」</td></tr>" +
+   "</table></div>" },
+
+ { id:'n5', ic:'🚨', ti:'開いた・入力した・お金を送ってしまったら', mt:'状況別の対処。時間が勝負です',
+   body:
+   "<ul>" +
+   "<li><b>リンクを開いただけで、何も入力していない</b> → 閉じます。OSとブラウザを最新にして、念のためウイルススキャンをします。</li>" +
+   "<li><b>IDとパスワードを入力した</b> → 公式アプリや、自分で開いた公式サイトから<b>すぐパスワードを変更</b>します。使い回していた他のサービスも変更し、多要素認証をオンにします。金融機関には、不審な取引がないか確認します。</li>" +
+   "<li><b>カード番号・暗証番号・認証コードを入力した、伝えた</b> → <b>すぐにカード会社・銀行に連絡</b>して、利用停止と再発行を依頼します。ネットバンキングは利用停止を依頼します。</li>" +
+   "<li><b>添付ファイルを開いた、アプリを入れた、遠隔操作を許した</b> → Wi-Fiとモバイル通信を切り、該当のアプリを削除します。端末の初期化も検討してください。重要なパスワードは、<b>別の端末から</b>変更します。IPAの情報セキュリティ安心相談窓口（<span class='tel'>03-5978-7509</span>）に相談できます。</li>" +
+   "<li><b>身分証の画像を送った</b> → 手順2（信用情報機関への本人申告）と、手順3（カード・口座の利用通知）を急いでください。</li>" +
+   "<li><b>お金を振り込んだ、渡した</b> → <b>1分でも早く</b>、自分の取引金融機関と振込先の金融機関に連絡して、振込先口座の凍結を依頼します。次に、警察（緊急は <span class='tel'>110</span>、相談は <span class='tel'>#9110</span>）と、消費者ホットライン <span class='tel'>188</span> に連絡します。</li>" +
+   "</ul>" +
+   "<div class='warn'>📝 <b>相談するときに手元に置くもの</b><br>" +
+   "メールやSMSの画面（スクリーンショット）、差出人、日時、電話番号、書面と封筒、振込の明細、やり取りの内容のメモ。<b>消さずに保存</b>しておいてください。</div>" }
+];
+
+var NOTICE_LINKS = [
+ { ic:'📞', nm:'IPA 情報セキュリティ安心相談窓口', ds:'不審なメール・ウイルスの相談（03-5978-7509）',
+   u:'https://www.ipa.go.jp/security/' },
+ { ic:'🎣', nm:'フィッシング対策協議会', ds:'フィッシングの報告と、最新の注意喚起',
+   u:'https://www.antiphishing.jp/' },
+ { ic:'👮', nm:'警察庁 特殊詐欺対策ページ（SOS47）', ds:'手口の紹介と、相談窓口',
+   u:'https://www.npa.go.jp/bureau/safetylife/sos47/' },
+ { ic:'🏦', nm:'全国銀行協会', ds:'銀行をかたる偽メール・偽サイトの注意喚起',
+   u:'https://www.zenginkyo.or.jp/' },
+ { ic:'🧾', nm:'国税庁', ds:'国税庁をかたる偽メール・偽サイトの注意',
+   u:'https://www.nta.go.jp/' },
+ { ic:'📋', nm:'日本年金機構', ds:'年金をかたる詐欺の注意喚起',
+   u:'https://www.nenkin.go.jp/' },
+ { ic:'🏛', nm:'政府広報オンライン', ds:'還付金詐欺などの暮らしの注意',
+   u:'https://www.gov-online.go.jp/' }
+];
+
+function drawNotices(){
+  var h = '';
+  for(var i=0;i<NOTICES.length;i++){
+    var s = NOTICES[i];
+    h += '<div class="step" id="' + s.id + '">' +
+      '<button type="button" class="step-h" onclick="toggleStep(\'' + s.id + '\')">' +
+        '<span class="no">' + s.ic + '</span>' +
+        '<span class="bd"><span class="ti">' + esc(s.ti) + '</span>' +
+        '<span class="mt">' + esc(s.mt) + '</span></span>' +
+        '<span class="ar">▶</span>' +
+      '</button>' +
+      '<div class="step-b">' + s.body + '</div></div>';
+  }
+  var el = document.getElementById('notices');
+  if(el) el.innerHTML = h;
+}
+
+function goNotice(){
+  closeMenu();
+  var sec = document.getElementById('secNotice');
+  var n1 = document.getElementById('n1');
+  if(n1) n1.classList.add('open');
+  if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+
+/* ============================================================
+   更新・被害防止ツール
+   ============================================================ */
+var BREACH_DATA = [{"o":"IDCフロンティア(ソフトバンク子会社)","y":"あいでぃーしーふろんてぃあ","k":"日本","d":"2026-10-07","n":0,"t":"","r":"SS","i":"IDCFクラウド契約の495企業・自治体が影響。JR東日本、日水物流(17拠点で入出荷停止)、茨城県・小平市、UDトーク、サイバー大学などで障害や漏えいのおそれ。個人情報の流出範囲は調査中","w":"ランサムウェア攻撃。東日本リージョン1の4ゾーンで仮想サーバーが停止、データ復元は顧客自身のバックアップからのみ","s":"ネットワーク遮断・管理コンソール停止・緊急対策本部設置・監督省庁と警視庁へ報告。顧客は別環境で再構築、バックアップ取得を"},{"o":"AdaptHealth","y":"あだぷとへるす","k":"米国","d":"2026-08","n":4115802,"t":"人","r":"B","i":"医療関連の個人情報(HHS報告)","w":"ネットワークサーバー侵害","s":"被害者通知・規制当局報告"},{"o":"アドベンチャー(skyticket)","y":"あどべんちゃー","k":"日本","d":"2026-10-09","n":14640000,"t":"件","r":"B","i":"旅行予約サイトの流出件数(約1,464万件)","w":"個人情報流出通知メールを送付。原因の詳細は公式発表で要確認","s":"利用者へ通知・パスワード変更と不審メール警戒"},{"o":"阿波銀行","y":"あわぎんこう","k":"日本","d":"2026-04-03","n":0,"t":"","r":"E","i":"お客さま情報等の一部","w":"行内OAシステムのテスト環境への不正アクセス","s":"公表・調査(テスト環境での本番データ保管が論点)"},{"o":"EPARKリラク&エステ","y":"いーぱーく","k":"日本","d":"2026","n":22180000,"t":"件","r":"SS","i":"健康状態など要配慮個人情報を含むレコード","w":"予約サイトからデータが外部転送","s":"要配慮情報のため厳格な通知・対応"},{"o":"イープラス","y":"いーぷらす","k":"日本","d":"2026-09-29","n":1463,"t":"件","r":"E","i":"スマチケの返金申請情報","w":"払戻管理システムへの不正アクセス","s":"漏えい確認・公表"},{"o":"岩手銀行(大和証券委託先経由)","y":"いわてぎんこう","k":"日本","d":"2026-10-08","n":0,"t":"","r":"D","i":"提携の大和証券サービス利用顧客の氏名・口座番号など(大和証券全体では約22万件)","w":"大和証券の外部委託先への不正アクセス(10/2〜3)","s":"大和証券からの報告を受け確認、公表"},{"o":"Instructure(Canvas)","y":"いんすとらくちゃー","k":"米国","d":"2026-05","n":275000000,"t":"主張","r":"A","i":"氏名・メール・学籍番号・メッセージ","w":"ShinyHunters による恐喝(約9,000機関と主張)","s":"学校を装うフィッシング警戒"},{"o":"ADT","y":"えーでぃーてぃー","k":"米国","d":"2026","n":5500000,"t":"人","r":"A","i":"氏名・電話・住所、一部は生年月日とSSN下4桁","w":"従業員アカウント侵害","s":"不審な訪問・電話は公式窓口で確認"},{"o":"Aesto Health","y":"えすと","k":"米国","d":"2026-09","n":9500000,"t":"人","r":"A","i":"患者情報","w":"報道で950万人超","s":"被害者通知"},{"o":"FBI(内部システム)","y":"えふびーあい","k":"米国","d":"2026-09","n":0,"t":"","r":"D","i":"捜査関連の機微情報・個人情報(窃取は未確認)","w":"ShinyHunters が窃取を主張(9/22)","s":"連邦機関は特権アクセス・ベンダー接続を見直し"},{"o":"欧州委員会","y":"おうしゅういいんかい","k":"EU","d":"2026-03","n":0,"t":"","r":"E","i":"詳細は調査中(2026年で2件目)","w":"調査中","s":"調査・通知"},{"o":"Aura","y":"おーら","k":"米国","d":"2026-03","n":900000,"t":"件","r":"D","i":"マーケティング記録(氏名・メール)","w":"ボイスフィッシングで従業員アカウント侵害","s":"公式アプリ/サイトで確認"},{"o":"OZmall(スターツ出版)","y":"おずもーる","k":"日本","d":"2026-10-01","n":442779,"t":"人","r":"D","i":"メール、一部氏名・都道府県(最大)","w":"不正アクセス(第2報)","s":"閲覧可能性の通知・注意喚起"},{"o":"Carnival","y":"かーにばる","k":"米国","d":"2026","n":5995277,"t":"人","r":"A","i":"氏名・住所・電話・生年月日・会員情報、一部に旅券/免許番号","w":"ソーシャルエンジニアリング","s":"信用情報の監視"},{"o":"科学技術振興機構(JST)","y":"かがくぎじゅつしんこうきこう","k":"日本","d":"2026-08-07","n":0,"t":"","r":"E","i":"一部役職員のメールボックス内のメールが外部に漏えいした可能性(7/28に外部機関から情報提供)","w":"メールアカウントへの不正アクセス","s":"不正アクセス経路を遮断・アクセス権限を無効化"},{"o":"Gyazo","y":"ぎゃぞ","k":"日本","d":"2026-09-16","n":23620000,"t":"件","r":"A","i":"ユーザー情報約2,362万件+画像メタデータ約4.9億件(続報で約1.74億件追加)。メール・パスワードのハッシュ値・利用者ID","w":"画像アップロードサーバーの脆弱性を悪用(9/11)","s":"認証データ無効化・画像アクセス制限、9/27復旧"},{"o":"QUOカード","y":"くおかーど","k":"日本","d":"2026-09-29","n":0,"t":"","r":"E","i":"LINEキャンペーンシステムの情報(件数調査中)","w":"キャンペーンシステムへの不正アクセス","s":"公表・調査"},{"o":"KDDI","y":"けーでぃーでぃーあい","k":"日本","d":"2026-06","n":0,"t":"","r":"E","i":"メールシステムへの不正アクセス(6/17検知)","w":"メールシステムへの侵入","s":"検知後6/23に公表"},{"o":"国防総省 DMDC","y":"こくぼうそうしょう","k":"米国","d":"2026-07","n":3000000,"t":"人","r":"A","i":"軍人・退役軍人・家族の機微情報(暗号化なし)","w":"2025年10月〜7/16発覚まで約9カ月アクセスを許した","s":"対象者へ通知書を送付"},{"o":"Kodak","y":"こだっく","k":"米国","d":"2026-06","n":2200000,"t":"件","r":"D","i":"顧客・社内レコード","w":"ShinyHunters が窃取を主張","s":"調査・通知"},{"o":"鳥取県琴浦町","y":"ことうらちょう","k":"日本","d":"2026-09-28","n":828,"t":"人","r":"E","i":"住民情報","w":"委託事業者が別自治体の領域へ誤格納","s":"誤格納先の閲覧者は職員1名・調査"},{"o":"さくらインターネット","y":"さくらいんたーねっと","k":"日本","d":"2026-09","n":1360563,"t":"件","r":"D","i":"アカウント情報(最大・可能性)","w":"販売管理システムへの不正アクセス","s":"公表・調査"},{"o":"JR九州","y":"じぇいあーるきゅうしゅう","k":"日本","d":"2026-10-09","n":1300000,"t":"件","r":"D","i":"メールアドレス(約130万件)","w":"報道見出しベース。原因は公式発表で要確認","s":"公表・調査"},{"o":"JR東日本(ビューカード/えきねっと/大人の休日倶楽部)","y":"じぇいあーるひがしにほん","k":"日本","d":"2026-10-09","n":6090000,"t":"件","r":"A","i":"メールアドレス(のべ。ビューカード約403万・えきねっと約167万・大人の休日倶楽部約39万)。大人の休日倶楽部は会員番号・カード有効期限・生年月日も。氏名・住所・電話・カード番号は可能性なしと説明","w":"ソフトバンク子会社IDCフロンティアの法人向けクラウドへの不正アクセス(メール配信用外部サービス経由)","s":"対象者へ個別メール通知予定。メール配信が一部停止(切符予約は通常どおり)。不審メール警戒"},{"o":"集英社(HAPPY PLUS COMMUNITY)","y":"しゅうえいしゃ","k":"日本","d":"2026-09-28","n":2835,"t":"人","r":"E","i":"ブロガーなどの情報","w":"コミュニティシステムへの不正アクセス","s":"漏えい確認・公表"},{"o":"修道学園ほか教育機関3組織","y":"しゅうどうがくえん","k":"日本","d":"2026-09-30","n":0,"t":"","r":"D","i":"教職員・学生・取引先の口座情報を含む","w":"管理サーバーへの不正アクセスなど","s":"公表・調査"},{"o":"スマレジEC","y":"すまれじ","k":"日本","d":"2026-09-25","n":0,"t":"","r":"E","i":"一部顧客環境の情報","w":"一部顧客環境への不正アクセス","s":"公表・調査"},{"o":"セイコーマート","y":"せいこーまーと","k":"日本","d":"2026-09-29","n":572022,"t":"人","r":"D","i":"氏名・生年月日・住所・電話・メール","w":"第三者による閲覧を確認","s":"公表・注意喚起"},{"o":"Cegedim Santé","y":"せじでぃむ","k":"フランス","d":"2026-03","n":15800000,"t":"件","r":"SS","i":"患者記録(欧州最大級の医療情報漏洩)","w":"医療ソフトから窃取(2025年末侵害)","s":"当局通知・患者告知"},{"o":"01銀行(ゼロワンバンク)","y":"ぜろわんぎんこう","k":"日本","d":"2026-08-27","n":0,"t":"","r":"D","i":"顧客識別情報・メールアドレス(最大100社分、対象顧客は未特定。口座情報・パスワードは対象外と公表)","w":"システムへの不正アクセス(8/17検知。経路は非公表)","s":"経路遮断・外部専門家と調査・警察に相談・関係当局へ報告"},{"o":"CenterPoint Energy","y":"せんたーぽいんと","k":"米国","d":"2026-09","n":0,"t":"","r":"E","i":"顧客データ(攻撃者主張。同社は未確認)","w":"8月17日〜9月1日の侵害を集団訴訟が主張","s":"8-K提出(9/14)"},{"o":"第一興商(ビッグエコー)","y":"だいいちこうしょう","k":"日本","d":"2026-10-09","n":8720000,"t":"件","r":"C","i":"利用者の個人情報(流出のおそれ)","w":"委託先での不正アクセス・情報漏えいのおそれ(原因の詳細は公式発表で要確認)","s":"公表・調査。不審メール警戒"},{"o":"第一生命グループ","y":"だいいちせいめい","k":"日本","d":"2026-10-02","n":120000,"t":"人","r":"D","i":"従業員・退職者の氏名・住所・電話・所属・職位","w":"人事システムへの不正アクセス","s":"公表・影響調査"},{"o":"タイムズカー","y":"たいむずかー","k":"日本","d":"2026-09-28","n":6600000,"t":"件","r":"A","i":"氏名・住所・生年月日・電話・メール等(法人会員含む)。うち約160万件は免許証など本人確認書類の画像。カード情報は対象外","w":"9/25検知、9/26遮断","s":"攻撃者の遮断・影響範囲確定・公表"},{"o":"大和証券","y":"だいわしょうけん","k":"日本","d":"2026-10-05","n":110000,"t":"人","r":"D","i":"顧客情報(約22万件)","w":"外部委託先への不正アクセス","s":"委託先管理の見直し・顧客へ注意喚起"},{"o":"ちばぎん商店(千葉銀行)","y":"ちばぎんしょうてん","k":"日本","d":"2026-09-17","n":10000,"t":"件","r":"E","i":"グループ合計約1万件の顧客情報(ちばぎん商店分は個人約192先・法人約722先)","w":"コーポレートサイトへの不正アクセス","s":"対象先へ通知"},{"o":"デジタル庁(GSS)","y":"でじたるちょう","k":"日本","d":"2026-09-11","n":246000,"t":"件","r":"D","i":"職員・業務関係者の氏名・メール・電話・住所","w":"不正アクセス(6/25検知、7/9侵入確認)","s":"公表・調査"},{"o":"TEMAIRAZU(宿泊予約システム)","y":"てまいらず","k":"日本","d":"2026-09-28","n":0,"t":"","r":"E","i":"宿泊予約者情報の閲覧・取得の可能性","w":"不正アクセス。宿泊者に不審なメッセージ","s":"不審メッセージへの注意喚起"},{"o":"DentaQuest","y":"でんたくえすと","k":"米国","d":"2026-06","n":0,"t":"","r":"E","i":"234GBのデータが公開されたと主張","w":"恐喝型攻撃","s":"7月から通知開始"},{"o":"東京メトロ「メトポ」","y":"とうきょうめとろ","k":"日本","d":"2026-09-27","n":59000,"t":"件","r":"E","i":"会員のメールアドレス","w":"不正アクセス","s":"閲覧・取得の可能性を公表、不審メール警戒"},{"o":"東洋紡グループ","y":"とうようぼう","k":"日本","d":"2026-09-25","n":0,"t":"","r":"E","i":"メールアカウント内の情報","w":"メールアカウントへの不正アクセス","s":"公表・調査"},{"o":"TOPPAN(損保ジャパン契約者)","y":"とっぱん","k":"日本","d":"2026-09-29","n":177426,"t":"人","r":"D","i":"保険料控除証明書のデータ","w":"同業他社への誤送付(委託先の取り扱いミス)","s":"送付先で削除済み・契約者へ通知"},{"o":"TriZetto Provider Solutions","y":"とりぜっと","k":"米国","d":"2026","n":3433965,"t":"人","r":"B","i":"医療関連の個人情報","w":"医療IT事業者への侵害","s":"被害者通知・HHS報告"},{"o":"ニッポンレンタカー","y":"にっぽんれんたかー","k":"日本","d":"2026-09-26","n":0,"t":"","r":"E","i":"アプリ会員情報(10/1に別の不正アクセスも判明)","w":"アプリへの不正アクセス","s":"公表・調査"},{"o":"日本エネルギー経済研究所","y":"にほんえねるぎーけいざいけんきゅうじょ","k":"日本","d":"2026-09-11","n":0,"t":"","r":"E","i":"情報漏えいを公表","w":"不正アクセス","s":"公表・調査"},{"o":"日本経済新聞社","y":"にほんけいざいしんぶんしゃ","k":"日本","d":"2026-10-04","n":0,"t":"","r":"E","i":"社員Google Workspaceの情報","w":"社員アカウントへの不正ログイン(気づかず継続)","s":"不正ログイン対策・公表"},{"o":"日本テレネット","y":"にほんてれねっと","k":"日本","d":"2026-09","n":1066000,"t":"件","r":"D","i":"委託元の顧客情報","w":"コールセンター受託会社での漏えい","s":"委託先管理の見直し"},{"o":"日本郵便(郵便局アプリ・ゆうID)","y":"にほんゆうびん","k":"日本","d":"2026-09-29","n":69,"t":"件","r":"E","i":"19名分。住所録・送り状情報を含む","w":"外部からの不正アクセス","s":"公表・対象者へ通知"},{"o":"八十二長野銀行","y":"はちじゅうにながのぎんこう","k":"日本","d":"2026-10-08","n":35,"t":"人","r":"E","i":"メールアドレス35名分。その他の情報は確認中","w":"職員が受信した不審メールを起点に、メールアカウントへ不正アクセス(10/7発生)","s":"対象者へ個別連絡・アカウントのアクセス遮断・外部専門事業者が調査"},{"o":"Panera Bread","y":"ぱねら","k":"米国","d":"2026","n":5100000,"t":"人","r":"C","i":"氏名・メール・電話・住所(約1,400万レコード)","w":"連絡先データの公開","s":"ポイント/返金を装うフィッシング警戒"},{"o":"VALX「FUN」(Commune基盤)","y":"ばるくす","k":"日本","d":"2026-10-08","n":0,"t":"","r":"E","i":"コミュニティ会員情報(件数未確認)","w":"コミュニティ基盤Communeへの不正アクセスの影響","s":"お知らせ公表・調査中"},{"o":"PFU(キングジムも公表)","y":"ぴーえふゆー","k":"日本","d":"2026-09-04","n":169355,"t":"件","r":"D","i":"注文データ(最大)","w":"過去に利用したショップサーブ経由","s":"漏えいを公表"},{"o":"福岡銀行(メットライフ生命出向者)","y":"ふくおかぎんこう","k":"日本","d":"2026","n":1052,"t":"人","r":"E","i":"個人1,052人・法人45社の契約情報の一部","w":"出向者による顧客情報の持ち出し(内部不正)","s":"メットライフ生命からの出向受け入れを廃止"},{"o":"ブックオフGHD(子会社会員管理)","y":"ぶっくおふ","k":"日本","d":"2026-10-09","n":6430000,"t":"件","r":"B","i":"氏名・生年月日・性別・メール・電話・住所・パスワードのハッシュ値・ポイントカード番号","w":"子会社の会員管理システムへの不正アクセス(経路未公表)。10/6確認","s":"調査・公表(件数は会員番号ベースで人数ではない)。パスワード変更・フィッシング警戒"},{"o":"VOISING","y":"ぼいしんぐ","k":"日本","d":"2026-09-30","n":170000,"t":"件","r":"D","i":"個人情報(第四報で調査結果を公表)","w":"利用するBIツールへの不正アクセス(ツールの脆弱性)","s":"調査結果と再発防止策を公表"},{"o":"MrMax","y":"みすたーまっくす","k":"日本","d":"2026-10-06","n":1730000,"t":"人","r":"D","i":"氏名・メール・電話(最大約173万人)","w":"オンラインストア等のサーバーへの不正アクセス","s":"公表・調査。偽メール警戒"},{"o":"ムーンスター","y":"むーんすたー","k":"日本","d":"2026-10-02","n":0,"t":"","r":"E","i":"オンラインストア利用者の氏名・住所・電話・メール・注文履歴(カード・パスワードは対象外)","w":"サーバーへの不正アクセス(3/26第一報、10/2続報)","s":"同社を装うフィッシングに警戒"},{"o":"ムラウチドットコム","y":"むらうちどっとこむ","k":"日本","d":"2026-09-15","n":7716811,"t":"件","r":"B","i":"氏名・住所・電話・メール・生年月日・性別","w":"システムの脆弱性(7月に発生)","s":"持ち出しを確認・調査結果を公表"},{"o":"物語コーポレーション(焼肉きんぐアプリ)","y":"ものがたりこーぽれーしょん","k":"日本","d":"2026-10-05","n":10788963,"t":"件","r":"B","i":"会員情報(メール・電話を含む)","w":"公式アプリ会員管理システムへの不正アクセス。10/2確認","s":"公表・調査・フィッシング警戒"},{"o":"ヤマトグループ(クロネコ代金後払い)","y":"やまとぐるーぷ","k":"日本","d":"2026-09-29","n":0,"t":"","r":"E","i":"件数調査中","w":"サービスへの不正アクセス","s":"公表・調査"},{"o":"ユーザベース(NewsPicks)","y":"ゆーざーべーす","k":"日本","d":"2026-10-08","n":1735154,"t":"人","r":"C","i":"会員ID・氏名・メール・電話。氏名・勤務先・カード番号下3〜4桁の可能性","w":"業務用管理ツールへの不正アクセス。10/3検知","s":"サービス一時停止・外部アクセス遮断"},{"o":"RIZAP","y":"らいざっぷ","k":"日本","d":"2026-09-03","n":19996,"t":"人","r":"D","i":"疾患情報を含む個人情報","w":"従業員が外部の生成AIに個人情報を入力(シャドーAI)","s":"AI利用ルールの整備"},{"o":"らしんばん","y":"らしんばん","k":"日本","d":"2026-10-01","n":0,"t":"","r":"E","i":"利用者の個人情報の一部(可能性)","w":"サービスへの第三者不正アクセス","s":"調査・公表"},{"o":"ローソン(ローソンID/アプリ予約)","y":"ろーそん","k":"日本","d":"2026-10-08","n":2155345,"t":"件","r":"D","i":"個人情報(ID情報を表示する仕組みへの不正アクセス)","w":"Webサービス・アプリ経由の不正アクセス","s":"公表・被害者への注意喚起。不審メール警戒"},{"o":"ロート製薬","y":"ろーとせいやく","k":"日本","d":"2026-09-11","n":0,"t":"","r":"E","i":"顧客情報を扱うシステム","w":"システムへの不正アクセス","s":"公表・調査"}];
+
+function doRefresh(){
+  toast('最新版を確認しています…');
+  try{ if(window.caches) caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }); }catch(e){}
+  setTimeout(function(){ try{ location.reload(); }catch(e){} }, 500);
+}
+function goShield(){
+  closeMenu();
+  var s = document.getElementById('secShield'), t = document.getElementById('t1');
+  if(t) t.classList.add('open');
+  if(s) s.scrollIntoView({behavior:'smooth', block:'start'});
+}
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var BR = BREACH_DATA;
+  var RO = ['SS','A','B','C','D','E'];
+  /* 1. 照合 */
+  $('svList').innerHTML = BR.map(function(o,i){
+    return '<label class="tk" data-t="' + esc((o.o + o.y).toLowerCase()) + '"><input type="checkbox" data-svc="' + i + '"><span>' + esc(o.o) + ' <small style="color:var(--sub)">(' + esc(o.k) + ')</small></span></label>';
+  }).join('');
+  function svRun(){
+    var on = [].slice.call(document.querySelectorAll('[data-svc]:checked')).map(function(x){ return BR[+x.getAttribute('data-svc')]; });
+    if(!on.length){ $('svOut').innerHTML = ''; return; }
+    on.sort(function(a,b){ return RO.indexOf(a.r) - RO.indexOf(b.r); });
+    $('svOut').innerHTML = '<div class="tl-r">該当 ' + on.length + ' 件</div>' + on.map(function(o){
+      var lv = /^(SS|A)$/.test(o.r) ? 1 : /^(B|C)$/.test(o.r) ? 2 : 3;
+      return '<div class="act a' + lv + '"><span class="rk rk-' + o.r + '">' + o.r + '</span> <b>' + esc(o.o) + '</b>(' + esc(o.d) + ')<br>漏洩:' + esc(o.i) + '<br>対応:' + esc(o.s) + '<br><a href="#" class="ls" data-q="' + esc(o.o) + '">世界版一覧で詳しく見る ↗</a></div>';
+    }).join('') + '<p class="sm" style="font-size:12px;color:var(--sub)">ランクは、規模・情報の機微さ・影響範囲からの目安(SS が最も重大)です。</p>';
+  }
+  [].forEach.call(document.querySelectorAll('[data-svc]'), function(x){ x.onchange = svRun; });
+  $('svOut').onclick = function(e){ var a = e.target.closest && e.target.closest('.ls'); if(a){ e.preventDefault(); openList(a.getAttribute('data-q')); } };
+  $('svClr').onclick = function(){ [].forEach.call(document.querySelectorAll('[data-svc]'), function(x){ x.checked = false; }); svRun(); };
+  $('svQ').oninput = function(){
+    var q = $('svQ').value.trim().toLowerCase();
+    [].forEach.call(document.querySelectorAll('#svList [data-t]'), function(l){ l.hidden = !!q && l.getAttribute('data-t').indexOf(q) < 0; });
+  };
+  /* 2. 怪しい連絡 */
+  var C = [['暗証番号・パスワード・認証コード(ワンタイムパスワード)を聞かれた、入力させられた',5],['ATMに行くよう言われた(還付金・給付金)',5],['キャッシュカード・通帳を預かる、渡すよう言われた',5],['電子マネー・ギフトカード・暗号資産での支払いを求められた',5],['「逮捕」「口座凍結」「法的措置」などで脅された',4],['「至急」「本日中」など期限で急かされた',3],['LINEなど別アプリへの移行や、ビデオ通話を求められた',3],['「誰にも話さないで」と言われた',4],['メール・SMS・書面にあるリンク、電話番号、QRコードを使うよう案内された',3],['差出人や担当者の名前・部署が不明確、または日本語が不自然',2],['取引のない機関から、突然届いた',2]];
+  $('ckList').innerHTML = C.map(function(c,i){ return '<label class="tk"><input type="checkbox" data-ck="' + i + '"><span>' + c[0] + '</span></label>'; }).join('');
+  function ckRun(){
+    var on = [].slice.call(document.querySelectorAll('[data-ck]:checked')).map(function(x){ return C[+x.getAttribute('data-ck')][1]; });
+    if(!on.length){ $('ckOut').innerHTML = ''; return; }
+    var t = on.reduce(function(a,b){ return a + b; }, 0), mx = Math.max.apply(null, on);
+    var lv = (mx >= 5 || t >= 8) ? 1 : t >= 4 ? 2 : 3;
+    var tx = ['','危険:詐欺の可能性が非常に高い','要警戒:詐欺の可能性が高い','注意:確認が必要'];
+    $('ckOut').innerHTML = '<div class="act a' + lv + '"><b class="u u' + lv + '">' + tx[lv] + '</b><br>' + (lv == 1
+      ? '<b>いますぐ連絡を切り、何も入力・送金しないでください。</b>すでに伝えた、送った場合は、金融機関・警察(緊急110/相談#9110)・188へ連絡します。'
+      : '相手の連絡手段は使わず、自分で調べた公式窓口で確認してください。家族にも相談を。') + '</div>';
+  }
+  [].forEach.call(document.querySelectorAll('[data-ck]'), function(x){ x.onchange = ckRun; });
+  var TW = ['co.jp','or.jp','ne.jp','go.jp','lg.jp','ac.jp','ed.jp','gr.jp'];
+  $('urlBtn').onclick = function(){
+    var u = $('urlIn').value.trim(), o = $('urlOut');
+    if(!u){ o.innerHTML = ''; return; }
+    var x; try{ x = new URL(/^[a-z]+:\/\//i.test(u) ? u : 'https://' + u); }catch(e){ o.innerHTML = '<div class="act a2">URLとして読み取れません。</div>'; return; }
+    var h = x.hostname.toLowerCase(), p = h.split('.'), f = [];
+    var reg = (p.length >= 3 && TW.indexOf(p.slice(-2).join('.')) >= 0) ? p.slice(-3).join('.') : p.slice(-2).join('.');
+    if(x.protocol !== 'https:') f.push('https ではありません');
+    if(/^\d+(\.\d+){3}$/.test(h)) f.push('ドメインが数字のIPアドレスです');
+    if(h.indexOf('xn--') >= 0) f.push('国際化ドメイン(xn--)です。似た別の文字が使われている可能性があります');
+    if(u.indexOf('@') >= 0) f.push('「@」を含みます(別のサイトへ飛ばす手口)');
+    if(p.length >= 5) f.push('サブドメインが多すぎます');
+    if((h.match(/-/g) || []).length >= 2) f.push('ハイフンが多いドメインです');
+    if(/(^|\.)(bit\.ly|t\.co|tinyurl\.com|is\.gd|cutt\.ly|ow\.ly|goo\.gl|t\.ly)$/.test(h)) f.push('短縮URLです(行き先が見えません)');
+    if(/\.(top|xyz|click|icu|cfd|sbs|cyou|buzz|vip|loan)$/.test(h)) f.push('フィッシングに悪用されやすい末尾のドメインです');
+    if(/(login|verify|secure|signin|confirm|update|account)/.test(h)) f.push('ドメインに login・verify などの語が含まれます');
+    o.innerHTML = '<div class="act a' + (f.length ? 1 : 3) + '"><b>本当の接続先ドメイン:</b> <span class="tl-mono">' + esc(reg) + '</span>(ホスト名: ' + esc(h) + ')<br>' +
+      (f.length ? '<b>怪しい兆候:</b><ul style="margin:4px 0 4px 19px">' + f.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' : '構造上の大きな兆候は見つかりませんでした。') +
+      '<br><b>ただし、兆候がなくても安全とは限りません。</b>このURLは開かず、公式サイトを自分で検索して開いてください。</div>';
+  };
+  /* 3. 家族 */
+  var W = ['あおぞら','みかん','ひまわり','かぼちゃ','たいやき','ふじさん','てんぷら','さくら','すいか','だいこん','おにぎり','こたつ','うみ','はなび','まつり','くじら','やきそば','もみじ','ぶどう','たこやき','きんぎょ','ふうせん','らーめん','いちご'];
+  function rnd(n){ var a = new Uint32Array(1), l = Math.floor(4294967296 / n) * n, v; do{ crypto.getRandomValues(a); v = a[0]; }while(v >= l); return v % n; }
+  function fm(){
+    var w = $('fmW').value.trim();
+    $('fmM').value = '【家族への大事なお知らせ】\n警察・銀行・役所・裁判所を名乗る電話やメールは、まず詐欺を疑ってください。\n\n1. 暗証番号・認証コードは、誰にも教えない\n2. キャッシュカードは渡さない。ATMにも行かない\n3. 一度切って、自分で調べた番号(カードの裏面など)にかけ直す\n4. 迷ったら、警察 #9110 か 消費者ホットライン 188 に相談\n5. 「誰にも言わないで」は詐欺のサイン\n' + (w ? '\nわが家の合言葉:「' + w + '」\n(電話で本人かどうか確かめるときに使います)' : '');
+  }
+  $('fmGen').onclick = function(){ var a = rnd(W.length), b2 = rnd(W.length); while(b2 == a) b2 = rnd(W.length); $('fmW').value = W[a] + '・' + W[b2] + '・' + (10 + rnd(90)); fm(); };
+  $('fmW').oninput = fm; fm();
+  $('fmCopy').onclick = function(){ copy($('fmM').value, '文面をコピーしました'); };
+  $('fmShare').onclick = function(){
+    if(navigator.share){ navigator.share({text: $('fmM').value}).catch(function(){}); }
+    else copy($('fmM').value, '文面をコピーしました');
+  };
+})();
+
+
+/* ============================================================
+   情報漏洩企業一覧2026 世界版
+   ============================================================ */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var RO = ['SS','A','B','C','D','E'], so = 'date', mo = 'all', q = '', last = [];
+  function fmn(n){ return n >= 1e8 ? (n/1e8).toFixed(2) + '億' : n >= 1e4 ? Math.round(n/1e4).toLocaleString() + '万' : String(n); }
+  var CMP = {
+    date: function(a,b){ return b.d.localeCompare(a.d); },
+    kana: function(a,b){ return a.y.localeCompare(b.y, 'ja'); },
+    size: function(a,b){ return b.n - a.n; },
+    sev: function(a,b){ return (RO.indexOf(a.r) - RO.indexOf(b.r)) || (b.n - a.n); }
+  };
+  var NM = {kana:'あいうえお順', date:'日付順(新しい順)', size:'漏洩規模順', sev:'重大度順(SS→E)'};
+  function card(o){
+    var sc = scale(o);
+    return '<div class="ls-card"><div class="hd"><span class="rk rk-' + o.r + '" aria-label="重大度' + o.r + '">' + o.r + '</span><b>' + esc(o.o) + '</b></div>' +
+      '<div class="mt2">' + esc(o.k) + ' ・ ' + esc(o.d) + ' ・ 規模:' + esc(sc) + '</div>' +
+      '<dl><dt>漏洩:</dt><dd>' + esc(o.i) + '</dd><dt>手口:</dt><dd>' + esc(o.w) + '</dd><dt>対応:</dt><dd>' + esc(o.s) + '</dd></dl></div>';
+  }
+  function render(){
+    var k = q.trim().toLowerCase();
+    var rows = BREACH_DATA.filter(function(o){ return !k || (o.o + o.y + o.k + o.i + o.w + o.s).toLowerCase().indexOf(k) >= 0; }).sort(CMP[so]);
+    last = rows;
+    var cnt = RO.map(function(r){ return r + ':' + rows.filter(function(o){ return o.r === r; }).length; }).join(' ');
+    $('lsInfo').textContent = '該当 ' + rows.length + ' 件 / 全 ' + BREACH_DATA.length + ' 件 ・ ' + NM[so] + ' ・ 重大度 ' + cnt;
+    var h = '';
+    if(!rows.length) h = '<p class="sm">該当する事案が見つかりません。</p>';
+    else if(mo === 'all') h = rows.map(card).join('');
+    else{
+      var cs = [];
+      rows.forEach(function(o){ if(cs.indexOf(o.k) < 0) cs.push(o.k); });
+      cs.sort(function(a,b){ return rows.filter(function(o){ return o.k === b; }).length - rows.filter(function(o){ return o.k === a; }).length; });
+      h = cs.map(function(c){ var r = rows.filter(function(o){ return o.k === c; }); return '<div class="ls-cn">' + esc(c) + '(' + r.length + '件)</div>' + r.map(card).join(''); }).join('');
+    }
+    $('lsOut').innerHTML = h;
+    [].forEach.call(document.querySelectorAll('#lsSort button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-o') === so); });
+    [].forEach.call(document.querySelectorAll('#lsMode button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-m') === mo); });
+  }
+  [].forEach.call(document.querySelectorAll('#lsSort button'), function(b){ b.onclick = function(){ so = b.getAttribute('data-o'); render(); }; });
+  [].forEach.call(document.querySelectorAll('#lsMode button'), function(b){ b.onclick = function(){ mo = b.getAttribute('data-m'); render(); }; });
+  function scale(o){
+    if(!o.n) return '規模未確認';
+    var s = fmn(o.n) + ((o.t === '件' || o.t === '人') ? o.t : '');
+    if(o.t === '主張') s += '(攻撃者の主張)'; else if(o.t === '分析' || o.t === '報道') s += '(' + o.t + ')';
+    return s;
+  }
+  function lsText(){
+    var k = q.trim();
+    var t = '【情報漏洩企業一覧2026 世界版】\n条件:' + (k ? '検索「' + k + '」' : '検索なし') + ' / ' + NM[so] + ' / ' + (mo === 'all' ? '全体' : '国別') +
+      '\n該当 ' + last.length + ' 件(全 ' + BREACH_DATA.length + ' 件・2026年10月10日時点の報道)\n';
+    function line(o, i){ return '\n' + i + '. [' + o.r + '] ' + o.o + '(' + o.k + '・' + o.d + ')\n   規模:' + scale(o) + '\n   漏洩:' + o.i + '\n   手口:' + o.w + '\n   対応:' + o.s + '\n'; }
+    if(mo === 'all'){ last.forEach(function(o, i){ t += line(o, i + 1); }); }
+    else{
+      var cs = []; last.forEach(function(o){ if(cs.indexOf(o.k) < 0) cs.push(o.k); });
+      cs.sort(function(a, b){ return last.filter(function(o){ return o.k === b; }).length - last.filter(function(o){ return o.k === a; }).length; });
+      var n = 0;
+      cs.forEach(function(c){ var r = last.filter(function(o){ return o.k === c; }); t += '\n■ ' + c + '(' + r.length + '件)\n'; r.forEach(function(o){ n++; t += line(o, n); }); });
+    }
+    return t + '\n※件数は人数ではなく、件数・アカウント数の場合があります。「主張」は攻撃者側の数字で、未確認です。重大度ランク(SS〜E)は目安です。\n詳しくは → ' + location.href.split('#')[0] + '\nDWA防災情報センター';
+  }
+  $('lsCopy').onclick = function(){
+    if(!last.length){ toast('コピーする結果がありません'); return; }
+    copy(lsText(), last.length + '件の結果をコピーしました');
+  };
+  $('lsShare').onclick = function(){
+    if(!last.length){ toast('共有する結果がありません'); return; }
+    var txt = lsText();
+    if(navigator.share){ navigator.share({title: '情報漏洩企業一覧2026 世界版', text: txt}).catch(function(){}); }
+    else copy(txt, '共有に未対応のため、結果をコピーしました');
+  };
+  $('lsQ').oninput = function(){ q = $('lsQ').value; render(); };
+  window.openList = function(query){
+    q = query || ''; $('lsQ').value = q;
+    render(); openDlg('dlgList');
+    var d = $('dlgList'); if(d) d.scrollTop = 0;
+  };
+  render();
+})();
+
+
+/* ============================================================
+   アプリとしてインストール
+   ============================================================ */
+var deferredPrompt = null;
+function isStandalone(){
+  return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+}
+function updInstall(){
+  var s = document.getElementById('mnuInstallSub');
+  if(!s) return;
+  s.textContent = isStandalone() ? 'インストール済み(アプリで表示中)'
+    : deferredPrompt ? 'ワンタップでインストールできます'
+    : '手順を表示します';
+}
+window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferredPrompt = e; updInstall(); });
+window.addEventListener('appinstalled', function(){ deferredPrompt = null; updInstall(); toast('インストールしました'); });
+function doInstall(){
+  closeMenu();
+  if(isStandalone()){ toast('すでにアプリとして開いています'); return; }
+  if(deferredPrompt){
+    var p = deferredPrompt; deferredPrompt = null;
+    p.prompt();
+    if(p.userChoice) p.userChoice.then(function(c){ updInstall(); if(c && c.outcome === 'accepted') toast('インストールしています…'); });
+    return;
+  }
+  openDlg('dlgInstall');
+}
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+  window.addEventListener('load', function(){ try{ navigator.serviceWorker.register('sw.js').catch(function(){}); }catch(e){} });
+}
+document.addEventListener('DOMContentLoaded', updInstall); updInstall();
+
+
+/* ============================================================
+   パスワードツール(判定・生成・保管庫)
+   ============================================================ */
+(function(){
+const $=id=>document.getElementById(id);
+function tab(t){['check','gen','vault'].forEach(k=>{$('pwP_'+k).hidden=k!==t});document.querySelectorAll('#pwTabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===t))}
+document.querySelectorAll('#pwTabs button').forEach(b=>b.onclick=()=>tab(b.dataset.p));
+window.openPw=t=>{tab(t||'check');openDlg('dlgPw')};
+/* ---- 判定 ---- */
+const COMMON=['password','passw0rd','123456','12345678','qwerty','abc123','111111','000000','letmein','admin','welcome','iloveyou','monkey','dragon','login','master','sunshine','princess','football','baseball','shadow','trustno1','changeme','secret','1q2w3e','asdf','zxcv','test','guest','root','user','pass','love','hello','tokyo','japan','sakura'];
+const KB=['qwertyuiop','asdfghjkl','zxcvbnm','1234567890','0987654321'];
+const norm=s=>s.toLowerCase().replace(/[@4]/g,'a').replace(/3/g,'e').replace(/0/g,'o').replace(/[1!|]/g,'l').replace(/[$5]/g,'s').replace(/7/g,'t');
+function seq(s){s=s.toLowerCase();for(let i=0;i<s.length-2;i++){const a=s.charCodeAt(i),b=s.charCodeAt(i+1),c=s.charCodeAt(i+2);if((b-a==1&&c-b==1)||(a-b==1&&b-c==1))return 1}
+ for(const r of KB)for(let i=0;i<=r.length-4;i++){const p=r.slice(i,i+4);if(s.includes(p)||s.includes([...p].reverse().join('')))return 1}return 0}
+function analyze(p){const n=[],L=/[a-z]/.test(p),U=/[A-Z]/.test(p),D=/\d/.test(p),S=/[!-\/:-@\[-`{-~]/.test(p),O=/[^\x00-\x7f]/.test(p);
+ const pool=(L?26:0)+(U?26:0)+(D?10:0)+(S?33:0)+(O?100:0)||1;let bits=p.length*Math.log2(pool);
+ const cls=[L,U,D,S].filter(Boolean).length;
+ if(p.length>=16)n.push(['ok','16文字以上で、長さは十分です']);else if(p.length>=12)n.push(['ok','12文字以上あります(16文字以上だと、より安心です)']);else n.push(['bad','短すぎます。12文字以上、できれば16文字以上に']);
+ if(cls>=3)n.push(['ok','文字の種類が混ざっています']);else n.push(['bad','大文字・小文字・数字・記号を混ぜましょう']);
+ if(new Set(p).size<p.length*.6){bits*=.7;n.push(['bad','同じ文字が多く使われています'])}
+ if(/(.)\1{2,}/.test(p)){bits-=8;n.push(['bad','同じ文字の連続があります'])}
+ if(seq(p)){bits-=10;n.push(['bad','連続した文字(abc、123、qwerty など)があります'])}
+ if(/(19|20)\d{2}/.test(p)){bits-=6;n.push(['bad','年号のような数字が含まれています'])}
+ const nm=norm(p),hit=COMMON.find(w=>nm.includes(w));
+ if(hit){bits=nm==hit?5:bits-18;n.push(['bad','よくあるパスワード・単語を含みます(置き換え文字を使っても推測されます)'])}
+ if(p.length<8)bits=Math.min(bits,25);bits=Math.max(0,bits);
+ return{bits,lv:bits<28?1:bits<40?2:bits<60?3:bits<80?4:5,n}}
+function fmtT(sec){if(sec<1)return'1秒未満';const u=[[60,'秒'],[60,'分'],[24,'時間'],[365,'日'],[1e4,'年'],[1e4,'万年'],[1e99,'億年']];let v=sec,i=0;for(;i<u.length-1&&v>=u[i][0];i++)v/=u[i][0];return Math.round(v).toLocaleString()+u[i][1]}
+const LB=['','非常に危険','危険','注意','安全','非常に安全'],IC=['','⛔','⚠️','🟡','✅','🛡️'];
+function showRes(a){const box=$('pwRes');if(!a){box.innerHTML='';return}
+ box.innerHTML=`<div class="tl-r">${IC[a.lv]} 危険度:${LB[a.lv]}(5段階中 ${a.lv})</div><div class="pwm l${a.lv}" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=a.lv?'on':''}"></i>`).join('')}</div><p>推定強度:約${Math.round(a.bits)}ビット / 総当たりの目安:${fmtT(Math.pow(2,a.bits-1)/1e10)}<br><span class="sm" style="font-size:12px;color:var(--sub)">(1秒に100億回試せる高速な攻撃を想定)</span></p><ul style="margin:4px 0 4px 6px;list-style:none">${a.n.map(x=>`<li style="font-size:13px">${x[0]=='ok'?'✔':'✖'} ${x[1]}</li>`).join('')}</ul>`}
+let ct,idleCk;
+const runCk=()=>showRes($('pwIn').value?analyze($('pwIn').value):null);
+$('pwIn').oninput=()=>{clearTimeout(ct);ct=setTimeout(runCk,500);clearTimeout(idleCk);idleCk=setTimeout(clrCk,12e4)};
+function clrCk(){$('pwIn').value='';$('pwRes').innerHTML=''}
+$('pwClr').onclick=clrCk;
+$('pwShow').onclick=()=>{const s=$('pwIn').type=='password';$('pwIn').type=s?'text':'password';$('pwShow').setAttribute('aria-pressed',s);$('pwShow').textContent=s?'🙈 隠す':'👁 表示する'};
+/* ---- 生成 ---- */
+function rnd(n){const a=new Uint32Array(1),lim=Math.floor(4294967296/n)*n;let x;do{crypto.getRandomValues(a);x=a[0]}while(x>=lim);return x%n}
+function gen(){const x=$('pwGX').checked,sets=[];
+ if($('pwGU').checked)sets.push(x?'ABCDEFGHJKLMNPQRSTUVWXYZ':'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+ if($('pwGL').checked)sets.push(x?'abcdefghijkmnpqrstuvwxyz':'abcdefghijklmnopqrstuvwxyz');
+ if($('pwGD').checked)sets.push(x?'23456789':'0123456789');
+ if($('pwGS').checked)sets.push('!@#$%&*-_=+?');
+ if(!sets.length){$('pwGo').value='';$('pwGMsg').textContent='文字の種類を1つ以上選んでください';return}
+ const len=+$('pwGl').value,all=sets.join(''),o=sets.map(s=>s[rnd(s.length)]);
+ while(o.length<len)o.push(all[rnd(all.length)]);
+ for(let i=o.length-1;i>0;i--){const j=rnd(i+1);[o[i],o[j]]=[o[j],o[i]]}
+ $('pwGo').value=o.join('');$('pwGMsg').textContent=''}
+$('pwGl').oninput=()=>{$('pwGlv').textContent=$('pwGl').value;gen()};
+['pwGU','pwGL','pwGD','pwGS','pwGX'].forEach(i=>$(i).onchange=gen);$('pwGen').onclick=gen;gen();
+function cp(t,m){copy(t,m);setTimeout(()=>{try{navigator.clipboard.writeText('')}catch(e){}},3e4)}
+$('pwGCopy').onclick=()=>cp($('pwGo').value,'コピーしました(30秒後に消去を試みます)');
+$('pwGChk').onclick=()=>{$('pwIn').value=$('pwGo').value;runCk();tab('check')};
+$('pwGVault').onclick=()=>{tab('vault');if($('pwMain').hidden)msg('保管庫のロックを解除してから、「生成して入れる」を使ってください',1);else{$('pwP').value=$('pwGo').value;$('pwP').focus()}};
+/* ---- 保管庫 ---- */
+const SK='pwvault.v1',IT=600000,MAXN=20,enc=new TextEncoder(),dec=new TextDecoder();
+let key=null,salt=null,items=[],idle,hid;
+const b64=u=>btoa(String.fromCharCode(...u)),ub=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const b64u=u=>b64(u).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const fb64u=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return ub(s)};
+let okS=true;try{localStorage.setItem('__t','1');localStorage.removeItem('__t')}catch(e){okS=false}
+const rd=()=>{try{return localStorage.getItem(SK)}catch(e){return null}};
+function msg(t,bad){const m=$('pwMsg');m.textContent=t;m.style.color=bad?'var(--red)':'var(--green)'}
+const derive=async(pw,s,it)=>{const k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:s,iterations:it,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])};
+async function seal(){const iv=crypto.getRandomValues(new Uint8Array(12)),ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(items)));localStorage.setItem(SK,JSON.stringify({v:1,it:IT,salt:b64(salt),iv:b64(iv),ct:b64(new Uint8Array(ct))}))}
+function view(){['pwSetup','pwLockV','pwMain'].forEach(i=>$(i).hidden=true);$('pwOff').hidden=okS;if(!okS)return;if(key)$('pwMain').hidden=false;else $(rd()?'pwLockV':'pwSetup').hidden=false}
+function lock(m){key=null;salt=null;items=[];['pwM1','pwM2','pwM3','pwO','pwP','pwXi','pwXm'].forEach(i=>$(i).value='');$('pwList').innerHTML='';view();msg(m||'',0)}
+function bump(){clearTimeout(idle);if(key)idle=setTimeout(()=>lock('3分操作がなかったため、自動ロックしました'),18e4)}
+['pointerdown','keydown','touchstart'].forEach(e=>addEventListener(e,bump,{passive:true}));
+document.addEventListener('visibilitychange',()=>{if(document.hidden)hid=setTimeout(()=>{if(key)lock('画面を離れたため、自動ロックしました')},6e4);else clearTimeout(hid)});
+function render(){$('pwCnt').textContent=items.length;$('pwList').innerHTML=items.map(it=>`<div class="pw-item" data-id="${it.id}"><b>${esc(it.org)}</b><span class="pv" aria-label="パスワードは非表示">••••••••</span><button type="button" class="tl-b" data-a="show">表示(5秒)</button><button type="button" class="tl-b" data-a="copy">コピー</button><button type="button" class="tl-b d" data-a="del">削除</button></div>`).join('')||'<p class="sm" style="font-size:12px;color:var(--sub)">まだ登録がありません</p>'}
+$('pwList').onclick=async e=>{const bt=e.target.closest('button');if(!bt)return;const row=bt.closest('.pw-item'),it=items.find(x=>x.id==row.dataset.id);if(!it)return;
+ if(bt.dataset.a=='show'){const s=row.querySelector('.pv');s.textContent=it.pw;setTimeout(()=>{s.textContent='••••••••'},5e3)}
+ if(bt.dataset.a=='copy')cp(it.pw,'コピーしました(30秒後に消去を試みます)');
+ if(bt.dataset.a=='del'){if(bt.dataset.c!='1'){bt.dataset.c='1';bt.textContent='本当に削除';setTimeout(()=>{bt.dataset.c='';bt.textContent='削除'},4e3);return}
+  items=items.filter(x=>x!=it);try{await seal();render();msg('削除しました',0)}catch(er){msg('保存に失敗しました',1)}}};
+$('pwCreate').onclick=async()=>{const a=$('pwM1').value;if(a!=$('pwM2').value)return msg('2回の入力が一致しません',1);const r=analyze(a);if(a.length<12||r.lv<4)return msg('マスターパスワードは12文字以上で、判定が「安全」以上になるようにしてください(「生成」で作れます)',1);
+ msg('作成中…(数秒かかります)',0);try{salt=crypto.getRandomValues(new Uint8Array(16));key=await derive(a,salt,IT);items=[];await seal();$('pwM1').value=$('pwM2').value='';view();render();bump();msg('保管庫を作成しました。マスターパスワードは忘れないでください',0)}catch(e){lock('作成に失敗しました')}};
+$('pwOpen').onclick=async()=>{const pw=$('pwM3').value;msg('確認中…',0);try{const o=JSON.parse(rd());salt=ub(o.salt);const k=await derive(pw,salt,o.it||IT),pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:ub(o.iv)},k,ub(o.ct));items=JSON.parse(dec.decode(pt));key=k;$('pwM3').value='';view();render();bump();msg('ロックを解除しました',0)}catch(e){salt=null;$('pwM3').value='';await new Promise(r=>setTimeout(r,1200));msg('マスターパスワードが違うか、データが壊れています',1)}};
+$('pwAdd').onclick=async()=>{const o=$('pwO').value.trim(),p=$('pwP').value;if(!o||!p)return msg('機関名とパスワードを入力してください',1);if(items.length>=MAXN)return msg('登録は最大20件までです',1);
+ items.push({id:Date.now().toString(36)+rnd(1e6),org:o,pw:p});try{await seal();$('pwO').value=$('pwP').value='';render();msg('暗号化して保存しました',0)}catch(e){items.pop();msg('保存に失敗しました',1)}};
+$('pwGenIn').onclick=()=>{$('pwP').value=$('pwGo').value;$('pwP').focus()};
+$('pwLockNow').onclick=()=>lock('ロックしました');
+function wipe(btn){if(btn.dataset.c!='1'){btn.dataset.c='1';const t=btn.textContent;btn.textContent='本当に全削除(復元不可)';setTimeout(()=>{btn.dataset.c='';btn.textContent=t},4e3);return}
+ try{localStorage.removeItem(SK)}catch(e){}lock('保管庫を削除しました');btn.dataset.c=''}
+$('pwWipe').onclick=e=>wipe(e.currentTarget);$('pwWipe0').onclick=e=>wipe(e.currentTarget);
+/* 機種変更(メール) */
+async function pack(){const iv=crypto.getRandomValues(new Uint8Array(12)),ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(items.map(x=>[x.org,x.pw])))));const o=new Uint8Array(32+ct.length);new DataView(o.buffer).setUint32(0,IT);o.set(salt,4);o.set(iv,20);o.set(ct,32);return 'PWV2:'+b64u(o)+':END2'}
+const mailBody=d=>'※暗号化済みの引っ越しデータです。マスターパスワードはこのメールに書かないでください。\n新しい端末の「機種変更:取り込み」に、このメール本文を貼り付けてください。\n\n'+d+'\n\n※取り込み後は、このメールと送信済みメールを削除してください。';
+$('pwMail').onclick=async()=>{if(!key)return msg('先にロックを解除してください',1);try{const a=document.createElement('a');a.href='mailto:?subject='+encodeURIComponent('パスワード保管庫の引っ越しデータ(暗号化済み)')+'&body='+encodeURIComponent(mailBody(await pack()).replace(/\n/g,'\r\n'));a.rel='noopener';document.body.appendChild(a);a.click();a.remove();msg('メール作成画面を開きます。宛先を入力して送信してください。開かない場合は「本文をコピー」を使ってください',0)}catch(e){msg('データを作成できませんでした',1)}};
+$('pwMailCopy').onclick=async()=>{if(!key)return msg('先にロックを解除してください',1);try{cp(mailBody(await pack()),'本文をコピーしました')}catch(e){msg('データを作成できませんでした',1)}};
+$('pwXImp').onclick=async()=>{try{if(rd())throw 1;const m=$('pwXi').value.match(/PWV2:([\s\S]*?):END2/);if(!m)throw 2;const u=fb64u(m[1].replace(/[^A-Za-z0-9_-]/g,'')),it=new DataView(u.buffer,0,4).getUint32(0);if(it!=IT)throw 3;const sa=u.slice(4,20),k=await derive($('pwXm').value,sa,it),pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(20,32)},k,u.slice(32)),a=JSON.parse(dec.decode(pt));if(!Array.isArray(a)||a.length>MAXN)throw 4;salt=sa;key=k;items=a.map(r=>({id:Date.now().toString(36)+rnd(1e6),org:String(r[0]),pw:String(r[1])}));await seal();lock('取り込みました。古い端末と同じマスターパスワードでロック解除してください')}catch(e){key=null;salt=null;items=[];msg('取り込めません。貼り付けミス、マスターパスワードの違い、またはこの端末に既に保管庫がある可能性があります',1)}};
+/* 閉じたら、入力を消してロック */
+const _cd=window.closeDlg;window.closeDlg=function(id){_cd(id);if(id==='dlgPw'){lock('');clrCk();$('pwGo').value='';gen();$('pwGMsg').textContent=''}};
+view();
+})();
+
+/* ---- 起動 ---- */
+(function(){
+  function go(){
+    drawSteps();
+    drawLinks('links', LINKS);
+    drawLinks('consult', CONSULT);
+    drawNotices();
+    drawLinks('noticeLinks', NOTICE_LINKS);
+    applyTheme(getTheme());
+    applySize(getSize());
+    drawCmap();
+    /* 最初の手順だけ開いておく */
+    var first = document.getElementById('s1');
+    if(first) first.classList.add('open');
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', go);
+    window.addEventListener('load', go);
+  }else go();
+})();
+</script>
+
+</body>
+</html>
