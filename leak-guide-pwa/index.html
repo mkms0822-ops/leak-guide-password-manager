@@ -10,6 +10,12 @@
 <meta property="og:description" content="免許証やクレジット情報が流出したとき、いま何をすべきか。">
 <meta name="theme-color" content="#131a26">
 <link rel="manifest" href="manifest.webmanifest">
+<script>
+/* インストール要求は、ページ読み込みの早い段階で届くことがあるため、先に受け取っておく */
+window.__bip = null;
+window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); window.__bip = e; document.dispatchEvent(new Event('bip-ready')); });
+window.addEventListener('appinstalled', function(){ window.__bip = null; document.dispatchEvent(new Event('bip-installed')); });
+</script>
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
@@ -441,6 +447,12 @@
   .tl-r{font-size:15px;font-weight:700;margin:8px 0}
   .tl-mono{font-family:var(--mono);letter-spacing:.03em}
   @media print{#secShield{display:none}}
+  a.tl-b{text-decoration:none}
+  .inst-lead .act{margin:0 0 12px}
+  .inst-steps{margin:6px 0 8px 22px}.inst-steps li{margin:5px 0;line-height:1.8}
+  .inst-arrow{display:block;text-align:center;font-size:30px;line-height:1;animation:instb 1.2s ease-in-out infinite}
+  @keyframes instb{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  @media (prefers-reduced-motion:reduce){.inst-arrow{animation:none}}
   .tl input[type=password]{width:100%;max-width:520px;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:#fff;color:inherit;font-family:var(--mono)}
   html.dk .tl input[type=password]{background:#141c2b}
   .tl input[type=range]{width:100%;max-width:420px;min-height:32px}
@@ -857,6 +869,7 @@
   <div class="dlg-in">
     <button class="dlg-x" onclick="closeDlg('dlgInstall')" aria-label="閉じる">✕</button>
     <h2>📲 アプリとしてインストール</h2>
+    <div class="inst-lead" id="instLead"></div>
     <p>ホーム画面にアイコンを置いて、アプリのように開けます。一度開くと、画面と画像が端末に保存され、<b>ネットがつながらない場所でも表示</b>できます。</p>
     <h3>iPhone / iPad(Safari)</h3>
     <p>画面下の<b>共有ボタン(□に↑)</b>を押し、<b>「ホーム画面に追加」</b>を選びます。</p>
@@ -1858,7 +1871,10 @@ function goShield(){
 /* ============================================================
    アプリとしてインストール
    ============================================================ */
-var deferredPrompt = null;
+var UA = navigator.userAgent || '';
+var IS_IOS = /iphone|ipad|ipod/i.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+var IS_ANDROID = /android/i.test(UA);
+var IN_APP = /Line\/|FBAN|FBAV|Instagram|Twitter|MicroMessenger|; wv\)|\bGSA\b/i.test(UA);
 function isStandalone(){
   return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
 }
@@ -1866,20 +1882,47 @@ function updInstall(){
   var s = document.getElementById('mnuInstallSub');
   if(!s) return;
   s.textContent = isStandalone() ? 'インストール済み(アプリで表示中)'
-    : deferredPrompt ? 'ワンタップでインストールできます'
+    : window.__bip ? 'ワンタップでインストールできます'
+    : IN_APP ? 'ブラウザで開き直す必要があります'
+    : IS_IOS ? '共有ボタンから追加します(案内を表示)'
     : '手順を表示します';
 }
-window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferredPrompt = e; updInstall(); });
-window.addEventListener('appinstalled', function(){ deferredPrompt = null; updInstall(); toast('インストールしました'); });
+document.addEventListener('bip-ready', updInstall);
+document.addEventListener('bip-installed', function(){ updInstall(); toast('インストールしました'); });
+function instLead(){
+  var h = '', url = location.href.split('#')[0];
+  if(IN_APP){
+    h = '<div class="act a1"><b class="u u1">いまはアプリ内のブラウザです</b><br>このままでは、ホーム画面に追加できません。<b>SafariまたはChromeで開き直してください。</b>';
+    if(IS_ANDROID) h += '<div><a class="tl-b p" href="intent://' + esc(location.host + location.pathname + location.search) + '#Intent;scheme=https;package=com.android.chrome;end">Chromeで開く</a></div>';
+    h += '<div><button type="button" class="tl-b" onclick="copy(\'' + esc(url) + '\',\'URLをコピーしました。SafariやChromeに貼り付けて開いてください\')">URLをコピー</button></div></div>';
+  }else if(IS_IOS){
+    h = '<div class="act a3"><b class="u u3">iPhone / iPad</b><ol class="inst-steps">' +
+      '<li>画面下の<b>共有ボタン(□に↑)</b>を押す<br><span style="color:var(--sub);font-size:12px">見当たらないときは、画面下の「…」を押します</span></li>' +
+      '<li><b>「ホーム画面に追加」</b>を選ぶ</li><li>右上の<b>「追加」</b>を押す</li></ol><span class="inst-arrow" aria-hidden="true">⬇</span>' +
+      '<div style="font-size:12px;color:var(--sub);text-align:center">※iPhoneは、仕組みの上、ボタン1つでの自動追加はできません</div></div>';
+  }else if(IS_ANDROID){
+    h = '<div class="act a3"><b class="u u3">Android</b><ol class="inst-steps">' +
+      '<li>右上のメニュー<b>(︙)</b>を押す</li><li><b>「アプリをインストール」</b>または<b>「ホーム画面に追加」</b>を選ぶ</li></ol>' +
+      '<div style="font-size:12px;color:var(--sub)">メニューに見当たらないときは、ページを再読み込みして、数秒待ってからもう一度お試しください。</div></div>';
+  }else{
+    h = '<div class="act a3"><b class="u u3">パソコン</b><br>アドレスバーの右にある<b>インストールのボタン</b>を押します。見当たらないときは、メニューから「アプリとしてインストール」を選びます。</div>';
+  }
+  document.getElementById('instLead').innerHTML = h;
+}
 function doInstall(){
   closeMenu();
   if(isStandalone()){ toast('すでにアプリとして開いています'); return; }
-  if(deferredPrompt){
-    var p = deferredPrompt; deferredPrompt = null;
-    p.prompt();
-    if(p.userChoice) p.userChoice.then(function(c){ updInstall(); if(c && c.outcome === 'accepted') toast('インストールしています…'); });
+  var p = window.__bip;
+  if(p){
+    window.__bip = null;
+    try{ p.prompt(); }catch(e){ instLead(); openDlg('dlgInstall'); return; }
+    if(p.userChoice) p.userChoice.then(function(c){
+      updInstall();
+      toast(c && c.outcome === 'accepted' ? 'インストールしています…' : 'キャンセルしました。もう一度メニューから追加できます');
+    });
     return;
   }
+  instLead();
   openDlg('dlgInstall');
 }
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){

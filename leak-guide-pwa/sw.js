@@ -1,5 +1,5 @@
 // 対処ガイド: ページ本体(HTML・画像・アイコン)だけをキャッシュします。入力内容や個人情報は扱いません。
-var V = 'leak-guide-v1';
+var V = 'leak-guide-v2';
 var FILES = ['./', './index.html', './manifest.webmanifest', './leak-hero.jpg',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './icons/apple-touch-icon-180.png'];
 self.addEventListener('install', function(e){
